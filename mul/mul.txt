@@ -1,0 +1,736 @@
+========================================
+Running: nsys profile -o mul/mul1 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 1024 --hidden-dim 3072
+Started at: Tue Feb  3 02:11:03 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 1, Tokens: 1024, Effective tokens: 1024
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          1024
+  Hidden dim:      3072
+  Total elements:  6,291,456 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [1024, 6144] torch.bfloat16
+  output:  [1024, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:          12.58 MB (tokens x 2 x hidden_dim x 2)
+  Write output:         6.29 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          12.58 MB
+  Total write:          6.29 MB
+  Total:               18.87 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0278 ms
+  Std:   0.0157 ms
+  Min:   0.0224 ms
+  Max:   0.1739 ms
+
+Bandwidth:
+  679.7 GB/s (8.5% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-cea4.qdstrm'
+[1/1] [0%                          ] mul1.nsys-rep[1/1] [0%                          ] mul1.nsys-rep[1/1] [====25%                     ] mul1.nsys-rep[1/1] [====28%                     ] mul1.nsys-rep[1/1] [=====31%                    ] mul1.nsys-rep[1/1] [=====32%                    ] mul1.nsys-rep[1/1] [======33%                   ] mul1.nsys-rep[1/1] [======34%                   ] mul1.nsys-rep[1/1] [======35%                   ] mul1.nsys-rep[1/1] [=======36%                  ] mul1.nsys-rep[1/1] [=======37%                  ] mul1.nsys-rep[1/1] [=======39%                  ] mul1.nsys-rep[1/1] [========41%                 ] mul1.nsys-rep[1/1] [==========47%               ] mul1.nsys-rep[1/1] [==========48%               ] mul1.nsys-rep[1/1] [===========51%              ] mul1.nsys-rep[1/1] [===========52%              ] mul1.nsys-rep[1/1] [===========53%              ] mul1.nsys-rep[1/1] [============54%             ] mul1.nsys-rep[1/1] [============55%             ] mul1.nsys-rep[1/1] [============56%             ] mul1.nsys-rep[1/1] [=============59%            ] mul1.nsys-rep[1/1] [==============61%           ] mul1.nsys-rep[1/1] [==============63%           ] mul1.nsys-rep[1/1] [==============64%           ] mul1.nsys-rep[1/1] [===============65%          ] mul1.nsys-rep[1/1] [================68%         ] mul1.nsys-rep[1/1] [===================82%      ] mul1.nsys-rep[1/1] [========================100%] mul1.nsys-rep[1/1] [========================100%] mul1.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul1.nsys-rep
+Finished at: Tue Feb  3 02:11:13 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul2 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 2048 --hidden-dim 3072
+Started at: Tue Feb  3 02:11:13 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 1, Tokens: 2048, Effective tokens: 2048
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          2048
+  Hidden dim:      3072
+  Total elements:  12,582,912 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [2048, 6144] torch.bfloat16
+  output:  [2048, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:          25.17 MB (tokens x 2 x hidden_dim x 2)
+  Write output:        12.58 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          25.17 MB
+  Total write:         12.58 MB
+  Total:               37.75 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0315 ms
+  Std:   0.0098 ms
+  Min:   0.0260 ms
+  Max:   0.1128 ms
+
+Bandwidth:
+  1199.9 GB/s (15.0% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-67f9.qdstrm'
+[1/1] [0%                          ] mul2.nsys-rep[1/1] [0%                          ] mul2.nsys-rep[1/1] [====25%                     ] mul2.nsys-rep[1/1] [====28%                     ] mul2.nsys-rep[1/1] [=====32%                    ] mul2.nsys-rep[1/1] [======33%                   ] mul2.nsys-rep[1/1] [======34%                   ] mul2.nsys-rep[1/1] [=======36%                  ] mul2.nsys-rep[1/1] [=======37%                  ] mul2.nsys-rep[1/1] [=======39%                  ] mul2.nsys-rep[1/1] [========41%                 ] mul2.nsys-rep[1/1] [==========48%               ] mul2.nsys-rep[1/1] [==========49%               ] mul2.nsys-rep[1/1] [===========51%              ] mul2.nsys-rep[1/1] [===========52%              ] mul2.nsys-rep[1/1] [===========53%              ] mul2.nsys-rep[1/1] [============54%             ] mul2.nsys-rep[1/1] [============55%             ] mul2.nsys-rep[1/1] [============57%             ] mul2.nsys-rep[1/1] [=============58%            ] mul2.nsys-rep[1/1] [=============60%            ] mul2.nsys-rep[1/1] [==============62%           ] mul2.nsys-rep[1/1] [==============64%           ] mul2.nsys-rep[1/1] [===============67%          ] mul2.nsys-rep[1/1] [===================82%      ] mul2.nsys-rep[1/1] [========================100%] mul2.nsys-rep[1/1] [========================100%] mul2.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul2.nsys-rep
+Finished at: Tue Feb  3 02:11:20 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul3 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:11:20 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          4096
+  Hidden dim:      3072
+  Total elements:  25,165,824 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [4096, 6144] torch.bfloat16
+  output:  [4096, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:          50.33 MB (tokens x 2 x hidden_dim x 2)
+  Write output:        25.17 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          50.33 MB
+  Total write:         25.17 MB
+  Total:               75.50 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0397 ms
+  Std:   0.0104 ms
+  Min:   0.0348 ms
+  Max:   0.1311 ms
+
+Bandwidth:
+  1901.1 GB/s (23.8% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-5dff.qdstrm'
+[1/1] [0%                          ] mul3.nsys-rep[1/1] [0%                          ] mul3.nsys-rep[1/1] [====25%                     ] mul3.nsys-rep[1/1] [====28%                     ] mul3.nsys-rep[1/1] [=====32%                    ] mul3.nsys-rep[1/1] [======33%                   ] mul3.nsys-rep[1/1] [======34%                   ] mul3.nsys-rep[1/1] [======35%                   ] mul3.nsys-rep[1/1] [=======36%                  ] mul3.nsys-rep[1/1] [=======37%                  ] mul3.nsys-rep[1/1] [=======39%                  ] mul3.nsys-rep[1/1] [========41%                 ] mul3.nsys-rep[1/1] [==========48%               ] mul3.nsys-rep[1/1] [==========49%               ] mul3.nsys-rep[1/1] [===========52%              ] mul3.nsys-rep[1/1] [===========53%              ] mul3.nsys-rep[1/1] [============54%             ] mul3.nsys-rep[1/1] [============57%             ] mul3.nsys-rep[1/1] [=============58%            ] mul3.nsys-rep[1/1] [=============60%            ] mul3.nsys-rep[1/1] [==============62%           ] mul3.nsys-rep[1/1] [==============64%           ] mul3.nsys-rep[1/1] [===============67%          ] mul3.nsys-rep[1/1] [===================82%      ] mul3.nsys-rep[1/1] [========================100%] mul3.nsys-rep[1/1] [========================100%] mul3.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul3.nsys-rep
+Finished at: Tue Feb  3 02:11:27 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul4 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:11:27 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 1, Tokens: 8192, Effective tokens: 8192
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          8192
+  Hidden dim:      3072
+  Total elements:  50,331,648 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [8192, 6144] torch.bfloat16
+  output:  [8192, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:         100.66 MB (tokens x 2 x hidden_dim x 2)
+  Write output:        50.33 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         100.66 MB
+  Total write:         50.33 MB
+  Total:              150.99 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0550 ms
+  Std:   0.0083 ms
+  Min:   0.0505 ms
+  Max:   0.1288 ms
+
+Bandwidth:
+  2747.8 GB/s (34.3% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-45ae.qdstrm'
+[1/1] [0%                          ] mul4.nsys-rep[1/1] [0%                          ] mul4.nsys-rep[1/1] [====25%                     ] mul4.nsys-rep[1/1] [====26%                     ] mul4.nsys-rep[1/1] [=====29%                    ] mul4.nsys-rep[1/1] [=====32%                    ] mul4.nsys-rep[1/1] [======33%                   ] mul4.nsys-rep[1/1] [======34%                   ] mul4.nsys-rep[1/1] [======35%                   ] mul4.nsys-rep[1/1] [=======36%                  ] mul4.nsys-rep[1/1] [=======38%                  ] mul4.nsys-rep[1/1] [=======39%                  ] mul4.nsys-rep[1/1] [========41%                 ] mul4.nsys-rep[1/1] [========42%                 ] mul4.nsys-rep[1/1] [==========48%               ] mul4.nsys-rep[1/1] [==========49%               ] mul4.nsys-rep[1/1] [===========50%              ] mul4.nsys-rep[1/1] [===========52%              ] mul4.nsys-rep[1/1] [===========53%              ] mul4.nsys-rep[1/1] [============54%             ] mul4.nsys-rep[1/1] [============55%             ] mul4.nsys-rep[1/1] [============56%             ] mul4.nsys-rep[1/1] [============57%             ] mul4.nsys-rep[1/1] [=============60%            ] mul4.nsys-rep[1/1] [==============62%           ] mul4.nsys-rep[1/1] [==============64%           ] mul4.nsys-rep[1/1] [===============65%          ] mul4.nsys-rep[1/1] [===============66%          ] mul4.nsys-rep[1/1] [================69%         ] mul4.nsys-rep[1/1] [====================83%     ] mul4.nsys-rep[1/1] [========================100%] mul4.nsys-rep[1/1] [========================100%] mul4.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul4.nsys-rep
+Finished at: Tue Feb  3 02:11:35 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul5 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 2048
+Started at: Tue Feb  3 02:11:35 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 2048
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          4096
+  Hidden dim:      2048
+  Total elements:  16,777,216 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [4096, 4096] torch.bfloat16
+  output:  [4096, 2048] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:          33.55 MB (tokens x 2 x hidden_dim x 2)
+  Write output:        16.78 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          33.55 MB
+  Total write:         16.78 MB
+  Total:               50.33 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0338 ms
+  Std:   0.0096 ms
+  Min:   0.0292 ms
+  Max:   0.1101 ms
+
+Bandwidth:
+  1489.1 GB/s (18.6% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-c419.qdstrm'
+[1/1] [0%                          ] mul5.nsys-rep[1/1] [0%                          ] mul5.nsys-rep[1/1] [====25%                     ] mul5.nsys-rep[1/1] [=====29%                    ] mul5.nsys-rep[1/1] [=====32%                    ] mul5.nsys-rep[1/1] [======33%                   ] mul5.nsys-rep[1/1] [======34%                   ] mul5.nsys-rep[1/1] [======35%                   ] mul5.nsys-rep[1/1] [=======36%                  ] mul5.nsys-rep[1/1] [=======38%                  ] mul5.nsys-rep[1/1] [=======39%                  ] mul5.nsys-rep[1/1] [========41%                 ] mul5.nsys-rep[1/1] [========42%                 ] mul5.nsys-rep[1/1] [===========50%              ] mul5.nsys-rep[1/1] [===========51%              ] mul5.nsys-rep[1/1] [===========53%              ] mul5.nsys-rep[1/1] [============54%             ] mul5.nsys-rep[1/1] [============56%             ] mul5.nsys-rep[1/1] [============57%             ] mul5.nsys-rep[1/1] [=============59%            ] mul5.nsys-rep[1/1] [=============60%            ] mul5.nsys-rep[1/1] [==============61%           ] mul5.nsys-rep[1/1] [==============62%           ] mul5.nsys-rep[1/1] [==============64%           ] mul5.nsys-rep[1/1] [===============65%          ] mul5.nsys-rep[1/1] [================68%         ] mul5.nsys-rep[1/1] [====================83%     ] mul5.nsys-rep[1/1] [========================100%] mul5.nsys-rep[1/1] [========================100%] mul5.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul5.nsys-rep
+Finished at: Tue Feb  3 02:11:44 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul6 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 4096
+Started at: Tue Feb  3 02:11:44 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 4096
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          4096
+  Hidden dim:      4096
+  Total elements:  33,554,432 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [4096, 8192] torch.bfloat16
+  output:  [4096, 4096] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:          67.11 MB (tokens x 2 x hidden_dim x 2)
+  Write output:        33.55 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          67.11 MB
+  Total write:         33.55 MB
+  Total:              100.66 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0483 ms
+  Std:   0.0119 ms
+  Min:   0.0426 ms
+  Max:   0.1498 ms
+
+Bandwidth:
+  2083.9 GB/s (26.0% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-4809.qdstrm'
+[1/1] [0%                          ] mul6.nsys-rep[1/1] [0%                          ] mul6.nsys-rep[1/1] [====25%                     ] mul6.nsys-rep[1/1] [=====29%                    ] mul6.nsys-rep[1/1] [=====32%                    ] mul6.nsys-rep[1/1] [======33%                   ] mul6.nsys-rep[1/1] [======34%                   ] mul6.nsys-rep[1/1] [======35%                   ] mul6.nsys-rep[1/1] [=======36%                  ] mul6.nsys-rep[1/1] [=======37%                  ] mul6.nsys-rep[1/1] [=======38%                  ] mul6.nsys-rep[1/1] [========40%                 ] mul6.nsys-rep[1/1] [========42%                 ] mul6.nsys-rep[1/1] [==========49%               ] mul6.nsys-rep[1/1] [===========50%              ] mul6.nsys-rep[1/1] [===========53%              ] mul6.nsys-rep[1/1] [============54%             ] mul6.nsys-rep[1/1] [============56%             ] mul6.nsys-rep[1/1] [============57%             ] mul6.nsys-rep[1/1] [=============58%            ] mul6.nsys-rep[1/1] [=============59%            ] mul6.nsys-rep[1/1] [=============60%            ] mul6.nsys-rep[1/1] [==============62%           ] mul6.nsys-rep[1/1] [==============64%           ] mul6.nsys-rep[1/1] [===============65%          ] mul6.nsys-rep[1/1] [================68%         ] mul6.nsys-rep[1/1] [====================83%     ] mul6.nsys-rep[1/1] [========================100%] mul6.nsys-rep[1/1] [========================100%] mul6.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul6.nsys-rep
+Finished at: Tue Feb  3 02:11:52 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul7 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 8192
+Started at: Tue Feb  3 02:11:52 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 8192
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          4096
+  Hidden dim:      8192
+  Total elements:  67,108,864 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [4096, 16384] torch.bfloat16
+  output:  [4096, 8192] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:         134.22 MB (tokens x 2 x hidden_dim x 2)
+  Write output:        67.11 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         134.22 MB
+  Total write:         67.11 MB
+  Total:              201.33 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0876 ms
+  Std:   0.0090 ms
+  Min:   0.0821 ms
+  Max:   0.1619 ms
+
+Bandwidth:
+  2297.0 GB/s (28.7% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-56ed.qdstrm'
+[1/1] [0%                          ] mul7.nsys-rep[1/1] [0%                          ] mul7.nsys-rep[1/1] [====26%                     ] mul7.nsys-rep[1/1] [=====29%                    ] mul7.nsys-rep[1/1] [=====32%                    ] mul7.nsys-rep[1/1] [======33%                   ] mul7.nsys-rep[1/1] [======34%                   ] mul7.nsys-rep[1/1] [======35%                   ] mul7.nsys-rep[1/1] [=======36%                  ] mul7.nsys-rep[1/1] [=======38%                  ] mul7.nsys-rep[1/1] [=======39%                  ] mul7.nsys-rep[1/1] [========40%                 ] mul7.nsys-rep[1/1] [========42%                 ] mul7.nsys-rep[1/1] [===========50%              ] mul7.nsys-rep[1/1] [===========51%              ] mul7.nsys-rep[1/1] [===========52%              ] mul7.nsys-rep[1/1] [===========53%              ] mul7.nsys-rep[1/1] [============54%             ] mul7.nsys-rep[1/1] [============55%             ] mul7.nsys-rep[1/1] [============56%             ] mul7.nsys-rep[1/1] [=============58%            ] mul7.nsys-rep[1/1] [=============60%            ] mul7.nsys-rep[1/1] [==============62%           ] mul7.nsys-rep[1/1] [==============64%           ] mul7.nsys-rep[1/1] [===============65%          ] mul7.nsys-rep[1/1] [================68%         ] mul7.nsys-rep[1/1] [====================83%     ] mul7.nsys-rep[1/1] [========================100%] mul7.nsys-rep[1/1] [========================100%] mul7.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul7.nsys-rep
+Finished at: Tue Feb  3 02:11:59 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul8 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 4 --tokens 2048 --hidden-dim 3072
+Started at: Tue Feb  3 02:11:59 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 4, Tokens: 2048, Effective tokens: 8192
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          8192
+  Hidden dim:      3072
+  Total elements:  50,331,648 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [8192, 6144] torch.bfloat16
+  output:  [8192, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:         100.66 MB (tokens x 2 x hidden_dim x 2)
+  Write output:        50.33 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         100.66 MB
+  Total write:         50.33 MB
+  Total:              150.99 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0573 ms
+  Std:   0.0101 ms
+  Min:   0.0510 ms
+  Max:   0.1436 ms
+
+Bandwidth:
+  2634.1 GB/s (32.9% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-d5b9.qdstrm'
+[1/1] [0%                          ] mul8.nsys-rep[1/1] [0%                          ] mul8.nsys-rep[1/1] [====26%                     ] mul8.nsys-rep[1/1] [=====29%                    ] mul8.nsys-rep[1/1] [=====32%                    ] mul8.nsys-rep[1/1] [======33%                   ] mul8.nsys-rep[1/1] [======34%                   ] mul8.nsys-rep[1/1] [======35%                   ] mul8.nsys-rep[1/1] [=======36%                  ] mul8.nsys-rep[1/1] [=======38%                  ] mul8.nsys-rep[1/1] [========40%                 ] mul8.nsys-rep[1/1] [=========43%                ] mul8.nsys-rep[1/1] [===========51%              ] mul8.nsys-rep[1/1] [===========52%              ] mul8.nsys-rep[1/1] [===========53%              ] mul8.nsys-rep[1/1] [============54%             ] mul8.nsys-rep[1/1] [============56%             ] mul8.nsys-rep[1/1] [============57%             ] mul8.nsys-rep[1/1] [=============60%            ] mul8.nsys-rep[1/1] [==============62%           ] mul8.nsys-rep[1/1] [==============64%           ] mul8.nsys-rep[1/1] [===============65%          ] mul8.nsys-rep[1/1] [================68%         ] mul8.nsys-rep[1/1] [====================83%     ] mul8.nsys-rep[1/1] [========================100%] mul8.nsys-rep[1/1] [========================100%] mul8.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul8.nsys-rep
+Finished at: Tue Feb  3 02:12:07 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul9 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 4 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:12:07 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 4, Tokens: 4096, Effective tokens: 16384
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          16384
+  Hidden dim:      3072
+  Total elements:  100,663,296 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [16384, 6144] torch.bfloat16
+  output:  [16384, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:         201.33 MB (tokens x 2 x hidden_dim x 2)
+  Write output:       100.66 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         201.33 MB
+  Total write:        100.66 MB
+  Total:              301.99 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0879 ms
+  Std:   0.0090 ms
+  Min:   0.0829 ms
+  Max:   0.1632 ms
+
+Bandwidth:
+  3436.7 GB/s (43.0% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-853a.qdstrm'
+[1/1] [0%                          ] mul9.nsys-rep[1/1] [0%                          ] mul9.nsys-rep[1/1] [====26%                     ] mul9.nsys-rep[1/1] [=====29%                    ] mul9.nsys-rep[1/1] [=====32%                    ] mul9.nsys-rep[1/1] [======33%                   ] mul9.nsys-rep[1/1] [======34%                   ] mul9.nsys-rep[1/1] [======35%                   ] mul9.nsys-rep[1/1] [=======36%                  ] mul9.nsys-rep[1/1] [=======38%                  ] mul9.nsys-rep[1/1] [========40%                 ] mul9.nsys-rep[1/1] [========42%                 ] mul9.nsys-rep[1/1] [==========49%               ] mul9.nsys-rep[1/1] [===========50%              ] mul9.nsys-rep[1/1] [===========52%              ] mul9.nsys-rep[1/1] [===========53%              ] mul9.nsys-rep[1/1] [============54%             ] mul9.nsys-rep[1/1] [============55%             ] mul9.nsys-rep[1/1] [============56%             ] mul9.nsys-rep[1/1] [=============59%            ] mul9.nsys-rep[1/1] [=============60%            ] mul9.nsys-rep[1/1] [==============62%           ] mul9.nsys-rep[1/1] [==============64%           ] mul9.nsys-rep[1/1] [===============65%          ] mul9.nsys-rep[1/1] [================68%         ] mul9.nsys-rep[1/1] [====================83%     ] mul9.nsys-rep[1/1] [========================100%] mul9.nsys-rep[1/1] [========================100%] mul9.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul9.nsys-rep
+Finished at: Tue Feb  3 02:12:14 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul10 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 4 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:12:14 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 4, Tokens: 8192, Effective tokens: 32768
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          32768
+  Hidden dim:      3072
+  Total elements:  201,326,592 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [32768, 6144] torch.bfloat16
+  output:  [32768, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:         402.65 MB (tokens x 2 x hidden_dim x 2)
+  Write output:       201.33 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         402.65 MB
+  Total write:        201.33 MB
+  Total:              603.98 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.1504 ms
+  Std:   0.0095 ms
+  Min:   0.1448 ms
+  Max:   0.2239 ms
+
+Bandwidth:
+  4014.7 GB/s (50.2% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-b155.qdstrm'
+[1/1] [0%                          ] mul10.nsys-rep[1/1] [0%                          ] mul10.nsys-rep[1/1] [====25%                     ] mul10.nsys-rep[1/1] [====28%                     ] mul10.nsys-rep[1/1] [=====31%                    ] mul10.nsys-rep[1/1] [=====32%                    ] mul10.nsys-rep[1/1] [======33%                   ] mul10.nsys-rep[1/1] [======34%                   ] mul10.nsys-rep[1/1] [======35%                   ] mul10.nsys-rep[1/1] [=======36%                  ] mul10.nsys-rep[1/1] [========40%                 ] mul10.nsys-rep[1/1] [========42%                 ] mul10.nsys-rep[1/1] [=========44%                ] mul10.nsys-rep[1/1] [=========45%                ] mul10.nsys-rep[1/1] [===========51%              ] mul10.nsys-rep[1/1] [===========52%              ] mul10.nsys-rep[1/1] [===========53%              ] mul10.nsys-rep[1/1] [============55%             ] mul10.nsys-rep[1/1] [============56%             ] mul10.nsys-rep[1/1] [============57%             ] mul10.nsys-rep[1/1] [=============60%            ] mul10.nsys-rep[1/1] [==============62%           ] mul10.nsys-rep[1/1] [==============64%           ] mul10.nsys-rep[1/1] [===============67%          ] mul10.nsys-rep[1/1] [===================82%      ] mul10.nsys-rep[1/1] [========================100%] mul10.nsys-rep[1/1] [========================100%] mul10.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul10.nsys-rep
+Finished at: Tue Feb  3 02:12:23 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul11 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 16 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:12:23 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 16, Tokens: 4096, Effective tokens: 65536
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          65536
+  Hidden dim:      3072
+  Total elements:  402,653,184 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [65536, 6144] torch.bfloat16
+  output:  [65536, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:         805.31 MB (tokens x 2 x hidden_dim x 2)
+  Write output:       402.65 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         805.31 MB
+  Total write:        402.65 MB
+  Total:                1.21 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.2779 ms
+  Std:   0.0106 ms
+  Min:   0.2703 ms
+  Max:   0.3552 ms
+
+Bandwidth:
+  4346.5 GB/s (54.3% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-bdbe.qdstrm'
+[1/1] [0%                          ] mul11.nsys-rep[1/1] [0%                          ] mul11.nsys-rep[1/1] [====25%                     ] mul11.nsys-rep[1/1] [=====29%                    ] mul11.nsys-rep[1/1] [=====32%                    ] mul11.nsys-rep[1/1] [======33%                   ] mul11.nsys-rep[1/1] [======34%                   ] mul11.nsys-rep[1/1] [======35%                   ] mul11.nsys-rep[1/1] [=======36%                  ] mul11.nsys-rep[1/1] [=======38%                  ] mul11.nsys-rep[1/1] [=======39%                  ] mul11.nsys-rep[1/1] [========40%                 ] mul11.nsys-rep[1/1] [========42%                 ] mul11.nsys-rep[1/1] [==========48%               ] mul11.nsys-rep[1/1] [==========49%               ] mul11.nsys-rep[1/1] [===========52%              ] mul11.nsys-rep[1/1] [===========53%              ] mul11.nsys-rep[1/1] [============54%             ] mul11.nsys-rep[1/1] [============55%             ] mul11.nsys-rep[1/1] [============57%             ] mul11.nsys-rep[1/1] [=============58%            ] mul11.nsys-rep[1/1] [=============60%            ] mul11.nsys-rep[1/1] [==============62%           ] mul11.nsys-rep[1/1] [==============64%           ] mul11.nsys-rep[1/1] [===============65%          ] mul11.nsys-rep[1/1] [================68%         ] mul11.nsys-rep[1/1] [===================82%      ] mul11.nsys-rep[1/1] [========================100%] mul11.nsys-rep[1/1] [========================100%] mul11.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul11.nsys-rep
+Finished at: Tue Feb  3 02:12:32 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul12 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 16 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:12:32 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 16, Tokens: 8192, Effective tokens: 131072
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          131072
+  Hidden dim:      3072
+  Total elements:  805,306,368 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [131072, 6144] torch.bfloat16
+  output:  [131072, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:           1.61 GB (tokens x 2 x hidden_dim x 2)
+  Write output:       805.31 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:           1.61 GB
+  Total write:        805.31 MB
+  Total:                2.42 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.5232 ms
+  Std:   0.0094 ms
+  Min:   0.5180 ms
+  Max:   0.6012 ms
+
+Bandwidth:
+  4618.0 GB/s (57.7% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-a798.qdstrm'
+[1/1] [0%                          ] mul12.nsys-rep[1/1] [0%                          ] mul12.nsys-rep[1/1] [====25%                     ] mul12.nsys-rep[1/1] [====28%                     ] mul12.nsys-rep[1/1] [=====32%                    ] mul12.nsys-rep[1/1] [======33%                   ] mul12.nsys-rep[1/1] [======34%                   ] mul12.nsys-rep[1/1] [======35%                   ] mul12.nsys-rep[1/1] [=======36%                  ] mul12.nsys-rep[1/1] [=======38%                  ] mul12.nsys-rep[1/1] [=======39%                  ] mul12.nsys-rep[1/1] [========41%                 ] mul12.nsys-rep[1/1] [==========48%               ] mul12.nsys-rep[1/1] [==========49%               ] mul12.nsys-rep[1/1] [===========51%              ] mul12.nsys-rep[1/1] [===========52%              ] mul12.nsys-rep[1/1] [===========53%              ] mul12.nsys-rep[1/1] [============54%             ] mul12.nsys-rep[1/1] [============55%             ] mul12.nsys-rep[1/1] [============56%             ] mul12.nsys-rep[1/1] [============57%             ] mul12.nsys-rep[1/1] [=============60%            ] mul12.nsys-rep[1/1] [==============62%           ] mul12.nsys-rep[1/1] [==============64%           ] mul12.nsys-rep[1/1] [================68%         ] mul12.nsys-rep[1/1] [===================82%      ] mul12.nsys-rep[1/1] [========================100%] mul12.nsys-rep[1/1] [========================100%] mul12.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul12.nsys-rep
+Finished at: Tue Feb  3 02:12:40 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul13 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 64 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:12:40 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 64, Tokens: 4096, Effective tokens: 262144
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          262144
+  Hidden dim:      3072
+  Total elements:  1,610,612,736 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [262144, 6144] torch.bfloat16
+  output:  [262144, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:           3.22 GB (tokens x 2 x hidden_dim x 2)
+  Write output:         1.61 GB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:           3.22 GB
+  Total write:          1.61 GB
+  Total:                4.83 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  1.0221 ms
+  Std:   0.0106 ms
+  Min:   1.0174 ms
+  Max:   1.1212 ms
+
+Bandwidth:
+  4727.2 GB/s (59.1% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-9362.qdstrm'
+[1/1] [0%                          ] mul13.nsys-rep[1/1] [0%                          ] mul13.nsys-rep[1/1] [====26%                     ] mul13.nsys-rep[1/1] [=====29%                    ] mul13.nsys-rep[1/1] [=====32%                    ] mul13.nsys-rep[1/1] [======33%                   ] mul13.nsys-rep[1/1] [======34%                   ] mul13.nsys-rep[1/1] [======35%                   ] mul13.nsys-rep[1/1] [=======36%                  ] mul13.nsys-rep[1/1] [=======37%                  ] mul13.nsys-rep[1/1] [=======38%                  ] mul13.nsys-rep[1/1] [========40%                 ] mul13.nsys-rep[1/1] [=========43%                ] mul13.nsys-rep[1/1] [===========51%              ] mul13.nsys-rep[1/1] [===========52%              ] mul13.nsys-rep[1/1] [===========53%              ] mul13.nsys-rep[1/1] [============54%             ] mul13.nsys-rep[1/1] [============55%             ] mul13.nsys-rep[1/1] [============56%             ] mul13.nsys-rep[1/1] [============57%             ] mul13.nsys-rep[1/1] [=============58%            ] mul13.nsys-rep[1/1] [=============60%            ] mul13.nsys-rep[1/1] [==============62%           ] mul13.nsys-rep[1/1] [==============64%           ] mul13.nsys-rep[1/1] [===============65%          ] mul13.nsys-rep[1/1] [===============66%          ] mul13.nsys-rep[1/1] [================70%         ] mul13.nsys-rep[1/1] [====================83%     ] mul13.nsys-rep[1/1] [========================100%] mul13.nsys-rep[1/1] [========================100%] mul13.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul13.nsys-rep
+Finished at: Tue Feb  3 02:12:50 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul14 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 64 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:12:50 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 64, Tokens: 8192, Effective tokens: 524288
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          524288
+  Hidden dim:      3072
+  Total elements:  3,221,225,472 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [524288, 6144] torch.bfloat16
+  output:  [524288, 3072] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:           6.44 GB (tokens x 2 x hidden_dim x 2)
+  Write output:         3.22 GB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:           6.44 GB
+  Total write:          3.22 GB
+  Total:                9.66 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  2.0142 ms
+  Std:   0.0118 ms
+  Min:   2.0086 ms
+  Max:   2.1236 ms
+
+Bandwidth:
+  4797.8 GB/s (60.0% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-5968.qdstrm'
+[1/1] [0%                          ] mul14.nsys-rep[1/1] [0%                          ] mul14.nsys-rep[1/1] [====26%                     ] mul14.nsys-rep[1/1] [=====29%                    ] mul14.nsys-rep[1/1] [=====32%                    ] mul14.nsys-rep[1/1] [======33%                   ] mul14.nsys-rep[1/1] [======34%                   ] mul14.nsys-rep[1/1] [======35%                   ] mul14.nsys-rep[1/1] [=======36%                  ] mul14.nsys-rep[1/1] [=======37%                  ] mul14.nsys-rep[1/1] [=======38%                  ] mul14.nsys-rep[1/1] [========40%                 ] mul14.nsys-rep[1/1] [========42%                 ] mul14.nsys-rep[1/1] [==========49%               ] mul14.nsys-rep[1/1] [===========52%              ] mul14.nsys-rep[1/1] [===========53%              ] mul14.nsys-rep[1/1] [============54%             ] mul14.nsys-rep[1/1] [============55%             ] mul14.nsys-rep[1/1] [============57%             ] mul14.nsys-rep[1/1] [=============58%            ] mul14.nsys-rep[1/1] [=============60%            ] mul14.nsys-rep[1/1] [==============62%           ] mul14.nsys-rep[1/1] [==============64%           ] mul14.nsys-rep[1/1] [===============65%          ] mul14.nsys-rep[1/1] [===============67%          ] mul14.nsys-rep[1/1] [=================72%        ] mul14.nsys-rep[1/1] [====================83%     ] mul14.nsys-rep[1/1] [========================100%] mul14.nsys-rep[1/1] [========================100%] mul14.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul14.nsys-rep
+Finished at: Tue Feb  3 02:12:58 UTC 2026
+
+========================================
+Running: nsys profile -o mul/mul15 python scripts/profiling/profile_silu_and_mul_bandwidth.py --warmup 100 --iters 100 --batch-size 16 --tokens 4096 --hidden-dim 8192
+Started at: Tue Feb  3 02:12:58 UTC 2026
+----------------------------------------
+Profiling SGLang silu_and_mul kernel...
+  Batch size: 16, Tokens: 4096, Effective tokens: 65536
+  Hidden dim: 8192
+  Clear L2 cache: True
+
+==========================================================================
+silu_and_mul Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          65536
+  Hidden dim:      8192
+  Total elements:  1,073,741,824 (input)
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [65536, 16384] torch.bfloat16
+  output:  [65536, 8192] torch.bfloat16
+
+Operation: output = silu(input[:, :hidden_dim]) * input[:, hidden_dim:]
+
+Memory Traffic:
+  Read input:           2.15 GB (tokens x 2 x hidden_dim x 2)
+  Write output:         1.07 GB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:           2.15 GB
+  Total write:          1.07 GB
+  Total:                3.22 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  1.0381 ms
+  Std:   0.0144 ms
+  Min:   1.0322 ms
+  Max:   1.1719 ms
+
+Bandwidth:
+  3102.9 GB/s (38.8% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-d948.qdstrm'
+[1/1] [0%                          ] mul15.nsys-rep[1/1] [0%                          ] mul15.nsys-rep[1/1] [====26%                     ] mul15.nsys-rep[1/1] [=====29%                    ] mul15.nsys-rep[1/1] [=====32%                    ] mul15.nsys-rep[1/1] [======33%                   ] mul15.nsys-rep[1/1] [======34%                   ] mul15.nsys-rep[1/1] [======35%                   ] mul15.nsys-rep[1/1] [=======36%                  ] mul15.nsys-rep[1/1] [=======38%                  ] mul15.nsys-rep[1/1] [=======39%                  ] mul15.nsys-rep[1/1] [========40%                 ] mul15.nsys-rep[1/1] [========42%                 ] mul15.nsys-rep[1/1] [==========48%               ] mul15.nsys-rep[1/1] [==========49%               ] mul15.nsys-rep[1/1] [===========50%              ] mul15.nsys-rep[1/1] [===========52%              ] mul15.nsys-rep[1/1] [===========53%              ] mul15.nsys-rep[1/1] [============54%             ] mul15.nsys-rep[1/1] [============55%             ] mul15.nsys-rep[1/1] [============57%             ] mul15.nsys-rep[1/1] [=============58%            ] mul15.nsys-rep[1/1] [=============60%            ] mul15.nsys-rep[1/1] [==============62%           ] mul15.nsys-rep[1/1] [==============64%           ] mul15.nsys-rep[1/1] [================68%         ] mul15.nsys-rep[1/1] [====================83%     ] mul15.nsys-rep[1/1] [========================100%] mul15.nsys-rep[1/1] [========================100%] mul15.nsys-rep
+Generated:
+    /home/samuel/sglang/mul/mul15.nsys-rep
+Finished at: Tue Feb  3 02:13:05 UTC 2026
+
+All runs completed successfully.

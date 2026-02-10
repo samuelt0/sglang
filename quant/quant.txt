@@ -1,0 +1,811 @@
+========================================
+Running: nsys profile -o quant/quant1 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 1024 --hidden-dim 3072
+Started at: Tue Feb  3 02:22:57 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 1, Tokens: 1024, Effective tokens: 1024
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      1024
+  Hidden dim (n):  3072
+  Total elements:  3,145,728
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [1024, 3072] torch.bfloat16
+  output:        [1024, 1536] uint8 (packed FP4)
+  output_scale:  [1024, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:           6.29 MB (tokens x hidden_dim x 2)
+  Write output:         1.57 MB (tokens x hidden_dim / 2)
+  Write scales:       196.61 KB (1024 x 192)
+  ------------------------------------
+  Total read:           6.29 MB
+  Total write:          1.77 MB
+  Total:                8.06 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0392 ms
+  Std:   0.0270 ms
+  Min:   0.0298 ms
+  Max:   0.2789 ms
+
+Bandwidth:
+  205.8 GB/s (2.6% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant1.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-3843.qdstrm'
+[1/1] [0%                          ] nsys-report-115a.nsys-rep[1/1] [0%                          ] nsys-report-115a.nsys-rep[1/1] [====28%                     ] nsys-report-115a.nsys-rep[1/1] [=====31%                    ] nsys-report-115a.nsys-rep[1/1] [======34%                   ] nsys-report-115a.nsys-rep[1/1] [======35%                   ] nsys-report-115a.nsys-rep[1/1] [=======36%                  ] nsys-report-115a.nsys-rep[1/1] [=======37%                  ] nsys-report-115a.nsys-rep[1/1] [=======38%                  ] nsys-report-115a.nsys-rep[1/1] [=======39%                  ] nsys-report-115a.nsys-rep[1/1] [========40%                 ] nsys-report-115a.nsys-rep[1/1] [=========43%                ] nsys-report-115a.nsys-rep[1/1] [===========51%              ] nsys-report-115a.nsys-rep[1/1] [===========52%              ] nsys-report-115a.nsys-rep[1/1] [============57%             ] nsys-report-115a.nsys-rep[1/1] [=============58%            ] nsys-report-115a.nsys-rep[1/1] [=============59%            ] nsys-report-115a.nsys-rep[1/1] [=============60%            ] nsys-report-115a.nsys-rep[1/1] [==============62%           ] nsys-report-115a.nsys-rep[1/1] [==============64%           ] nsys-report-115a.nsys-rep[1/1] [===============66%          ] nsys-report-115a.nsys-rep[1/1] [================68%         ] nsys-report-115a.nsys-rep[1/1] [================69%         ] nsys-report-115a.nsys-rep[1/1] [=================72%        ] nsys-report-115a.nsys-rep[1/1] [====================84%     ] nsys-report-115a.nsys-rep[1/1] [========================100%] nsys-report-115a.nsys-rep[1/1] [========================100%] nsys-report-115a.nsys-rep
+Generated:
+    /tmp/nsys-report-115a.nsys-rep
+Finished at: Tue Feb  3 02:23:07 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant2 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 2048 --hidden-dim 3072
+Started at: Tue Feb  3 02:23:07 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 1, Tokens: 2048, Effective tokens: 2048
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      2048
+  Hidden dim (n):  3072
+  Total elements:  6,291,456
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [2048, 3072] torch.bfloat16
+  output:        [2048, 1536] uint8 (packed FP4)
+  output_scale:  [2048, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:          12.58 MB (tokens x hidden_dim x 2)
+  Write output:         3.15 MB (tokens x hidden_dim / 2)
+  Write scales:       393.22 KB (2048 x 192)
+  ------------------------------------
+  Total read:          12.58 MB
+  Total write:          3.54 MB
+  Total:               16.12 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0372 ms
+  Std:   0.0173 ms
+  Min:   0.0288 ms
+  Max:   0.1954 ms
+
+Bandwidth:
+  433.5 GB/s (5.4% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant2.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-1e58.qdstrm'
+[1/1] [0%                          ] nsys-report-a7bf.nsys-rep[1/1] [0%                          ] nsys-report-a7bf.nsys-rep[1/1] [====28%                     ] nsys-report-a7bf.nsys-rep[1/1] [=====30%                    ] nsys-report-a7bf.nsys-rep[1/1] [======33%                   ] nsys-report-a7bf.nsys-rep[1/1] [======34%                   ] nsys-report-a7bf.nsys-rep[1/1] [======35%                   ] nsys-report-a7bf.nsys-rep[1/1] [=======36%                  ] nsys-report-a7bf.nsys-rep[1/1] [=======37%                  ] nsys-report-a7bf.nsys-rep[1/1] [=======38%                  ] nsys-report-a7bf.nsys-rep[1/1] [=======39%                  ] nsys-report-a7bf.nsys-rep[1/1] [========41%                 ] nsys-report-a7bf.nsys-rep[1/1] [=========44%                ] nsys-report-a7bf.nsys-rep[1/1] [===========52%              ] nsys-report-a7bf.nsys-rep[1/1] [===========53%              ] nsys-report-a7bf.nsys-rep[1/1] [============56%             ] nsys-report-a7bf.nsys-rep[1/1] [============57%             ] nsys-report-a7bf.nsys-rep[1/1] [=============58%            ] nsys-report-a7bf.nsys-rep[1/1] [=============59%            ] nsys-report-a7bf.nsys-rep[1/1] [=============60%            ] nsys-report-a7bf.nsys-rep[1/1] [==============61%           ] nsys-report-a7bf.nsys-rep[1/1] [==============62%           ] nsys-report-a7bf.nsys-rep[1/1] [==============64%           ] nsys-report-a7bf.nsys-rep[1/1] [===============66%          ] nsys-report-a7bf.nsys-rep[1/1] [===============67%          ] nsys-report-a7bf.nsys-rep[1/1] [================68%         ] nsys-report-a7bf.nsys-rep[1/1] [================69%         ] nsys-report-a7bf.nsys-rep[1/1] [=================72%        ] nsys-report-a7bf.nsys-rep[1/1] [====================84%     ] nsys-report-a7bf.nsys-rep[1/1] [========================100%] nsys-report-a7bf.nsys-rep[1/1] [========================100%] nsys-report-a7bf.nsys-rep
+Generated:
+    /tmp/nsys-report-a7bf.nsys-rep
+Finished at: Tue Feb  3 02:23:15 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant3 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:23:15 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      4096
+  Hidden dim (n):  3072
+  Total elements:  12,582,912
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [4096, 3072] torch.bfloat16
+  output:        [4096, 1536] uint8 (packed FP4)
+  output_scale:  [4096, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:          25.17 MB (tokens x hidden_dim x 2)
+  Write output:         6.29 MB (tokens x hidden_dim / 2)
+  Write scales:       786.43 KB (4096 x 192)
+  ------------------------------------
+  Total read:          25.17 MB
+  Total write:          7.08 MB
+  Total:               32.24 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0412 ms
+  Std:   0.0199 ms
+  Min:   0.0309 ms
+  Max:   0.2054 ms
+
+Bandwidth:
+  782.5 GB/s (9.8% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant3.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-5376.qdstrm'
+[1/1] [0%                          ] nsys-report-d5c3.nsys-rep[1/1] [0%                          ] nsys-report-d5c3.nsys-rep[1/1] [====28%                     ] nsys-report-d5c3.nsys-rep[1/1] [=====29%                    ] nsys-report-d5c3.nsys-rep[1/1] [=====31%                    ] nsys-report-d5c3.nsys-rep[1/1] [======34%                   ] nsys-report-d5c3.nsys-rep[1/1] [======35%                   ] nsys-report-d5c3.nsys-rep[1/1] [=======36%                  ] nsys-report-d5c3.nsys-rep[1/1] [=======37%                  ] nsys-report-d5c3.nsys-rep[1/1] [=======38%                  ] nsys-report-d5c3.nsys-rep[1/1] [=======39%                  ] nsys-report-d5c3.nsys-rep[1/1] [========41%                 ] nsys-report-d5c3.nsys-rep[1/1] [=========44%                ] nsys-report-d5c3.nsys-rep[1/1] [===========52%              ] nsys-report-d5c3.nsys-rep[1/1] [===========53%              ] nsys-report-d5c3.nsys-rep[1/1] [============57%             ] nsys-report-d5c3.nsys-rep[1/1] [=============58%            ] nsys-report-d5c3.nsys-rep[1/1] [=============59%            ] nsys-report-d5c3.nsys-rep[1/1] [=============60%            ] nsys-report-d5c3.nsys-rep[1/1] [==============61%           ] nsys-report-d5c3.nsys-rep[1/1] [==============62%           ] nsys-report-d5c3.nsys-rep[1/1] [==============63%           ] nsys-report-d5c3.nsys-rep[1/1] [===============65%          ] nsys-report-d5c3.nsys-rep[1/1] [===============66%          ] nsys-report-d5c3.nsys-rep[1/1] [================68%         ] nsys-report-d5c3.nsys-rep[1/1] [================69%         ] nsys-report-d5c3.nsys-rep[1/1] [=================72%        ] nsys-report-d5c3.nsys-rep[1/1] [====================84%     ] nsys-report-d5c3.nsys-rep[1/1] [========================100%] nsys-report-d5c3.nsys-rep[1/1] [========================100%] nsys-report-d5c3.nsys-rep
+Generated:
+    /tmp/nsys-report-d5c3.nsys-rep
+Finished at: Tue Feb  3 02:23:23 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant4 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:23:23 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 1, Tokens: 8192, Effective tokens: 8192
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      8192
+  Hidden dim (n):  3072
+  Total elements:  25,165,824
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [8192, 3072] torch.bfloat16
+  output:        [8192, 1536] uint8 (packed FP4)
+  output_scale:  [8192, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:          50.33 MB (tokens x hidden_dim x 2)
+  Write output:        12.58 MB (tokens x hidden_dim / 2)
+  Write scales:         1.57 MB (8192 x 192)
+  ------------------------------------
+  Total read:          50.33 MB
+  Total write:         14.16 MB
+  Total:               64.49 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0474 ms
+  Std:   0.0169 ms
+  Min:   0.0402 ms
+  Max:   0.2047 ms
+
+Bandwidth:
+  1360.5 GB/s (17.0% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant4.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-1395.qdstrm'
+[1/1] [0%                          ] nsys-report-db54.nsys-rep[1/1] [0%                          ] nsys-report-db54.nsys-rep[1/1] [====28%                     ] nsys-report-db54.nsys-rep[1/1] [=====31%                    ] nsys-report-db54.nsys-rep[1/1] [======34%                   ] nsys-report-db54.nsys-rep[1/1] [======35%                   ] nsys-report-db54.nsys-rep[1/1] [=======36%                  ] nsys-report-db54.nsys-rep[1/1] [=======37%                  ] nsys-report-db54.nsys-rep[1/1] [=======38%                  ] nsys-report-db54.nsys-rep[1/1] [=======39%                  ] nsys-report-db54.nsys-rep[1/1] [========41%                 ] nsys-report-db54.nsys-rep[1/1] [=========44%                ] nsys-report-db54.nsys-rep[1/1] [=========45%                ] nsys-report-db54.nsys-rep[1/1] [===========53%              ] nsys-report-db54.nsys-rep[1/1] [============54%             ] nsys-report-db54.nsys-rep[1/1] [============57%             ] nsys-report-db54.nsys-rep[1/1] [=============58%            ] nsys-report-db54.nsys-rep[1/1] [=============59%            ] nsys-report-db54.nsys-rep[1/1] [=============60%            ] nsys-report-db54.nsys-rep[1/1] [==============61%           ] nsys-report-db54.nsys-rep[1/1] [==============62%           ] nsys-report-db54.nsys-rep[1/1] [==============63%           ] nsys-report-db54.nsys-rep[1/1] [==============64%           ] nsys-report-db54.nsys-rep[1/1] [===============66%          ] nsys-report-db54.nsys-rep[1/1] [================68%         ] nsys-report-db54.nsys-rep[1/1] [================71%         ] nsys-report-db54.nsys-rep[1/1] [====================84%     ] nsys-report-db54.nsys-rep[1/1] [========================100%] nsys-report-db54.nsys-rep[1/1] [========================100%] nsys-report-db54.nsys-rep
+Generated:
+    /tmp/nsys-report-db54.nsys-rep
+Finished at: Tue Feb  3 02:23:33 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant5 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 2048
+Started at: Tue Feb  3 02:23:33 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 2048
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      4096
+  Hidden dim (n):  2048
+  Total elements:  8,388,608
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [4096, 2048] torch.bfloat16
+  output:        [4096, 1024] uint8 (packed FP4)
+  output_scale:  [4096, 128] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:          16.78 MB (tokens x hidden_dim x 2)
+  Write output:         4.19 MB (tokens x hidden_dim / 2)
+  Write scales:       524.29 KB (4096 x 128)
+  ------------------------------------
+  Total read:          16.78 MB
+  Total write:          4.72 MB
+  Total:               21.50 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0391 ms
+  Std:   0.0297 ms
+  Min:   0.0301 ms
+  Max:   0.3228 ms
+
+Bandwidth:
+  549.5 GB/s (6.9% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant5.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-2103.qdstrm'
+[1/1] [0%                          ] nsys-report-ff63.nsys-rep[1/1] [0%                          ] nsys-report-ff63.nsys-rep[1/1] [====26%                     ] nsys-report-ff63.nsys-rep[1/1] [=====29%                    ] nsys-report-ff63.nsys-rep[1/1] [=====32%                    ] nsys-report-ff63.nsys-rep[1/1] [======33%                   ] nsys-report-ff63.nsys-rep[1/1] [======34%                   ] nsys-report-ff63.nsys-rep[1/1] [======35%                   ] nsys-report-ff63.nsys-rep[1/1] [=======36%                  ] nsys-report-ff63.nsys-rep[1/1] [=======37%                  ] nsys-report-ff63.nsys-rep[1/1] [=======38%                  ] nsys-report-ff63.nsys-rep[1/1] [=======39%                  ] nsys-report-ff63.nsys-rep[1/1] [========40%                 ] nsys-report-ff63.nsys-rep[1/1] [========42%                 ] nsys-report-ff63.nsys-rep[1/1] [==========48%               ] nsys-report-ff63.nsys-rep[1/1] [==========49%               ] nsys-report-ff63.nsys-rep[1/1] [===========53%              ] nsys-report-ff63.nsys-rep[1/1] [============54%             ] nsys-report-ff63.nsys-rep[1/1] [============55%             ] nsys-report-ff63.nsys-rep[1/1] [============56%             ] nsys-report-ff63.nsys-rep[1/1] [============57%             ] nsys-report-ff63.nsys-rep[1/1] [=============58%            ] nsys-report-ff63.nsys-rep[1/1] [=============60%            ] nsys-report-ff63.nsys-rep[1/1] [==============61%           ] nsys-report-ff63.nsys-rep[1/1] [==============63%           ] nsys-report-ff63.nsys-rep[1/1] [===============65%          ] nsys-report-ff63.nsys-rep[1/1] [===============66%          ] nsys-report-ff63.nsys-rep[1/1] [================69%         ] nsys-report-ff63.nsys-rep[1/1] [====================83%     ] nsys-report-ff63.nsys-rep[1/1] [========================100%] nsys-report-ff63.nsys-rep[1/1] [========================100%] nsys-report-ff63.nsys-rep
+Generated:
+    /tmp/nsys-report-ff63.nsys-rep
+Finished at: Tue Feb  3 02:23:41 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant6 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 4096
+Started at: Tue Feb  3 02:23:41 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 4096
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      4096
+  Hidden dim (n):  4096
+  Total elements:  16,777,216
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [4096, 4096] torch.bfloat16
+  output:        [4096, 2048] uint8 (packed FP4)
+  output_scale:  [4096, 256] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:          33.55 MB (tokens x hidden_dim x 2)
+  Write output:         8.39 MB (tokens x hidden_dim / 2)
+  Write scales:         1.05 MB (4096 x 256)
+  ------------------------------------
+  Total read:          33.55 MB
+  Total write:          9.44 MB
+  Total:               42.99 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0408 ms
+  Std:   0.0163 ms
+  Min:   0.0341 ms
+  Max:   0.1907 ms
+
+Bandwidth:
+  1053.4 GB/s (13.2% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant6.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-361d.qdstrm'
+[1/1] [0%                          ] nsys-report-e9fa.nsys-rep[1/1] [0%                          ] nsys-report-e9fa.nsys-rep[1/1] [====28%                     ] nsys-report-e9fa.nsys-rep[1/1] [=====31%                    ] nsys-report-e9fa.nsys-rep[1/1] [======33%                   ] nsys-report-e9fa.nsys-rep[1/1] [======34%                   ] nsys-report-e9fa.nsys-rep[1/1] [======35%                   ] nsys-report-e9fa.nsys-rep[1/1] [=======36%                  ] nsys-report-e9fa.nsys-rep[1/1] [=======37%                  ] nsys-report-e9fa.nsys-rep[1/1] [=======39%                  ] nsys-report-e9fa.nsys-rep[1/1] [========41%                 ] nsys-report-e9fa.nsys-rep[1/1] [=========43%                ] nsys-report-e9fa.nsys-rep[1/1] [=========44%                ] nsys-report-e9fa.nsys-rep[1/1] [===========52%              ] nsys-report-e9fa.nsys-rep[1/1] [===========53%              ] nsys-report-e9fa.nsys-rep[1/1] [============56%             ] nsys-report-e9fa.nsys-rep[1/1] [============57%             ] nsys-report-e9fa.nsys-rep[1/1] [=============58%            ] nsys-report-e9fa.nsys-rep[1/1] [=============59%            ] nsys-report-e9fa.nsys-rep[1/1] [=============60%            ] nsys-report-e9fa.nsys-rep[1/1] [==============61%           ] nsys-report-e9fa.nsys-rep[1/1] [==============63%           ] nsys-report-e9fa.nsys-rep[1/1] [==============64%           ] nsys-report-e9fa.nsys-rep[1/1] [===============65%          ] nsys-report-e9fa.nsys-rep[1/1] [===============67%          ] nsys-report-e9fa.nsys-rep[1/1] [================68%         ] nsys-report-e9fa.nsys-rep[1/1] [================71%         ] nsys-report-e9fa.nsys-rep[1/1] [====================84%     ] nsys-report-e9fa.nsys-rep[1/1] [========================100%] nsys-report-e9fa.nsys-rep[1/1] [========================100%] nsys-report-e9fa.nsys-rep
+Generated:
+    /tmp/nsys-report-e9fa.nsys-rep
+Finished at: Tue Feb  3 02:23:48 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant7 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 8192
+Started at: Tue Feb  3 02:23:48 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 8192
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      4096
+  Hidden dim (n):  8192
+  Total elements:  33,554,432
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [4096, 8192] torch.bfloat16
+  output:        [4096, 4096] uint8 (packed FP4)
+  output_scale:  [4096, 512] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:          67.11 MB (tokens x hidden_dim x 2)
+  Write output:        16.78 MB (tokens x hidden_dim / 2)
+  Write scales:         2.10 MB (4096 x 512)
+  ------------------------------------
+  Total read:          67.11 MB
+  Total write:         18.87 MB
+  Total:               85.98 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0518 ms
+  Std:   0.0189 ms
+  Min:   0.0422 ms
+  Max:   0.2078 ms
+
+Bandwidth:
+  1658.8 GB/s (20.7% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant7.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-e81c.qdstrm'
+[1/1] [0%                          ] nsys-report-28da.nsys-rep[1/1] [0%                          ] nsys-report-28da.nsys-rep[1/1] [====28%                     ] nsys-report-28da.nsys-rep[1/1] [=====30%                    ] nsys-report-28da.nsys-rep[1/1] [======33%                   ] nsys-report-28da.nsys-rep[1/1] [======34%                   ] nsys-report-28da.nsys-rep[1/1] [======35%                   ] nsys-report-28da.nsys-rep[1/1] [=======36%                  ] nsys-report-28da.nsys-rep[1/1] [=======37%                  ] nsys-report-28da.nsys-rep[1/1] [=======38%                  ] nsys-report-28da.nsys-rep[1/1] [========41%                 ] nsys-report-28da.nsys-rep[1/1] [========42%                 ] nsys-report-28da.nsys-rep[1/1] [=========46%                ] nsys-report-28da.nsys-rep[1/1] [============54%             ] nsys-report-28da.nsys-rep[1/1] [============55%             ] nsys-report-28da.nsys-rep[1/1] [============56%             ] nsys-report-28da.nsys-rep[1/1] [============57%             ] nsys-report-28da.nsys-rep[1/1] [=============58%            ] nsys-report-28da.nsys-rep[1/1] [=============59%            ] nsys-report-28da.nsys-rep[1/1] [==============61%           ] nsys-report-28da.nsys-rep[1/1] [==============62%           ] nsys-report-28da.nsys-rep[1/1] [==============63%           ] nsys-report-28da.nsys-rep[1/1] [===============65%          ] nsys-report-28da.nsys-rep[1/1] [===============67%          ] nsys-report-28da.nsys-rep[1/1] [================68%         ] nsys-report-28da.nsys-rep[1/1] [================71%         ] nsys-report-28da.nsys-rep[1/1] [====================84%     ] nsys-report-28da.nsys-rep[1/1] [========================100%] nsys-report-28da.nsys-rep[1/1] [========================100%] nsys-report-28da.nsys-rep
+Generated:
+    /tmp/nsys-report-28da.nsys-rep
+Finished at: Tue Feb  3 02:23:56 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant8 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 4 --tokens 2048 --hidden-dim 3072
+Started at: Tue Feb  3 02:23:56 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 4, Tokens: 2048, Effective tokens: 8192
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      8192
+  Hidden dim (n):  3072
+  Total elements:  25,165,824
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [8192, 3072] torch.bfloat16
+  output:        [8192, 1536] uint8 (packed FP4)
+  output_scale:  [8192, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:          50.33 MB (tokens x hidden_dim x 2)
+  Write output:        12.58 MB (tokens x hidden_dim / 2)
+  Write scales:         1.57 MB (8192 x 192)
+  ------------------------------------
+  Total read:          50.33 MB
+  Total write:         14.16 MB
+  Total:               64.49 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0486 ms
+  Std:   0.0243 ms
+  Min:   0.0399 ms
+  Max:   0.2659 ms
+
+Bandwidth:
+  1325.7 GB/s (16.6% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant8.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-428f.qdstrm'
+[1/1] [0%                          ] nsys-report-b017.nsys-rep[1/1] [0%                          ] nsys-report-b017.nsys-rep[1/1] [====28%                     ] nsys-report-b017.nsys-rep[1/1] [=====31%                    ] nsys-report-b017.nsys-rep[1/1] [======33%                   ] nsys-report-b017.nsys-rep[1/1] [======34%                   ] nsys-report-b017.nsys-rep[1/1] [======35%                   ] nsys-report-b017.nsys-rep[1/1] [=======36%                  ] nsys-report-b017.nsys-rep[1/1] [=======37%                  ] nsys-report-b017.nsys-rep[1/1] [=======39%                  ] nsys-report-b017.nsys-rep[1/1] [========40%                 ] nsys-report-b017.nsys-rep[1/1] [=========43%                ] nsys-report-b017.nsys-rep[1/1] [===========52%              ] nsys-report-b017.nsys-rep[1/1] [===========53%              ] nsys-report-b017.nsys-rep[1/1] [============56%             ] nsys-report-b017.nsys-rep[1/1] [============57%             ] nsys-report-b017.nsys-rep[1/1] [=============58%            ] nsys-report-b017.nsys-rep[1/1] [=============59%            ] nsys-report-b017.nsys-rep[1/1] [=============60%            ] nsys-report-b017.nsys-rep[1/1] [==============62%           ] nsys-report-b017.nsys-rep[1/1] [==============64%           ] nsys-report-b017.nsys-rep[1/1] [===============66%          ] nsys-report-b017.nsys-rep[1/1] [================68%         ] nsys-report-b017.nsys-rep[1/1] [================69%         ] nsys-report-b017.nsys-rep[1/1] [=================72%        ] nsys-report-b017.nsys-rep[1/1] [====================84%     ] nsys-report-b017.nsys-rep[1/1] [========================100%] nsys-report-b017.nsys-rep[1/1] [========================100%] nsys-report-b017.nsys-rep
+Generated:
+    /tmp/nsys-report-b017.nsys-rep
+Finished at: Tue Feb  3 02:24:04 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant9 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 4 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:24:04 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 4, Tokens: 4096, Effective tokens: 16384
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      16384
+  Hidden dim (n):  3072
+  Total elements:  50,331,648
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [16384, 3072] torch.bfloat16
+  output:        [16384, 1536] uint8 (packed FP4)
+  output_scale:  [16384, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:         100.66 MB (tokens x hidden_dim x 2)
+  Write output:        25.17 MB (tokens x hidden_dim / 2)
+  Write scales:         3.15 MB (16384 x 192)
+  ------------------------------------
+  Total read:         100.66 MB
+  Total write:         28.31 MB
+  Total:              128.97 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0657 ms
+  Std:   0.0174 ms
+  Min:   0.0541 ms
+  Max:   0.1824 ms
+
+Bandwidth:
+  1962.8 GB/s (24.5% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant9.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-8f84.qdstrm'
+[1/1] [0%                          ] nsys-report-01fd.nsys-rep[1/1] [0%                          ] nsys-report-01fd.nsys-rep[1/1] [====28%                     ] nsys-report-01fd.nsys-rep[1/1] [=====30%                    ] nsys-report-01fd.nsys-rep[1/1] [======33%                   ] nsys-report-01fd.nsys-rep[1/1] [======34%                   ] nsys-report-01fd.nsys-rep[1/1] [======35%                   ] nsys-report-01fd.nsys-rep[1/1] [=======36%                  ] nsys-report-01fd.nsys-rep[1/1] [=======37%                  ] nsys-report-01fd.nsys-rep[1/1] [========41%                 ] nsys-report-01fd.nsys-rep[1/1] [========42%                 ] nsys-report-01fd.nsys-rep[1/1] [=========45%                ] nsys-report-01fd.nsys-rep[1/1] [===========53%              ] nsys-report-01fd.nsys-rep[1/1] [============54%             ] nsys-report-01fd.nsys-rep[1/1] [============55%             ] nsys-report-01fd.nsys-rep[1/1] [============56%             ] nsys-report-01fd.nsys-rep[1/1] [============57%             ] nsys-report-01fd.nsys-rep[1/1] [=============58%            ] nsys-report-01fd.nsys-rep[1/1] [=============59%            ] nsys-report-01fd.nsys-rep[1/1] [=============60%            ] nsys-report-01fd.nsys-rep[1/1] [==============63%           ] nsys-report-01fd.nsys-rep[1/1] [===============65%          ] nsys-report-01fd.nsys-rep[1/1] [===============66%          ] nsys-report-01fd.nsys-rep[1/1] [===============67%          ] nsys-report-01fd.nsys-rep[1/1] [================68%         ] nsys-report-01fd.nsys-rep[1/1] [================71%         ] nsys-report-01fd.nsys-rep[1/1] [====================84%     ] nsys-report-01fd.nsys-rep[1/1] [========================100%] nsys-report-01fd.nsys-rep[1/1] [========================100%] nsys-report-01fd.nsys-rep
+Generated:
+    /tmp/nsys-report-01fd.nsys-rep
+Finished at: Tue Feb  3 02:24:12 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant10 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 4 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:24:12 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 4, Tokens: 8192, Effective tokens: 32768
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      32768
+  Hidden dim (n):  3072
+  Total elements:  100,663,296
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [32768, 3072] torch.bfloat16
+  output:        [32768, 1536] uint8 (packed FP4)
+  output_scale:  [32768, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:         201.33 MB (tokens x hidden_dim x 2)
+  Write output:        50.33 MB (tokens x hidden_dim / 2)
+  Write scales:         6.29 MB (32768 x 192)
+  ------------------------------------
+  Total read:         201.33 MB
+  Total write:         56.62 MB
+  Total:              257.95 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0927 ms
+  Std:   0.0150 ms
+  Min:   0.0851 ms
+  Max:   0.2213 ms
+
+Bandwidth:
+  2782.6 GB/s (34.8% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant10.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-cf3e.qdstrm'
+[1/1] [0%                          ] nsys-report-5755.nsys-rep[1/1] [0%                          ] nsys-report-5755.nsys-rep[1/1] [====28%                     ] nsys-report-5755.nsys-rep[1/1] [=====31%                    ] nsys-report-5755.nsys-rep[1/1] [======33%                   ] nsys-report-5755.nsys-rep[1/1] [======34%                   ] nsys-report-5755.nsys-rep[1/1] [======35%                   ] nsys-report-5755.nsys-rep[1/1] [=======36%                  ] nsys-report-5755.nsys-rep[1/1] [=======37%                  ] nsys-report-5755.nsys-rep[1/1] [=======38%                  ] nsys-report-5755.nsys-rep[1/1] [=======39%                  ] nsys-report-5755.nsys-rep[1/1] [========40%                 ] nsys-report-5755.nsys-rep[1/1] [========41%                 ] nsys-report-5755.nsys-rep[1/1] [=========43%                ] nsys-report-5755.nsys-rep[1/1] [=========44%                ] nsys-report-5755.nsys-rep[1/1] [===========53%              ] nsys-report-5755.nsys-rep[1/1] [============54%             ] nsys-report-5755.nsys-rep[1/1] [============56%             ] nsys-report-5755.nsys-rep[1/1] [============57%             ] nsys-report-5755.nsys-rep[1/1] [=============58%            ] nsys-report-5755.nsys-rep[1/1] [=============60%            ] nsys-report-5755.nsys-rep[1/1] [==============61%           ] nsys-report-5755.nsys-rep[1/1] [==============62%           ] nsys-report-5755.nsys-rep[1/1] [==============64%           ] nsys-report-5755.nsys-rep[1/1] [===============66%          ] nsys-report-5755.nsys-rep[1/1] [================68%         ] nsys-report-5755.nsys-rep[1/1] [================69%         ] nsys-report-5755.nsys-rep[1/1] [=================72%        ] nsys-report-5755.nsys-rep[1/1] [====================84%     ] nsys-report-5755.nsys-rep[1/1] [========================100%] nsys-report-5755.nsys-rep[1/1] [========================100%] nsys-report-5755.nsys-rep
+Generated:
+    /tmp/nsys-report-5755.nsys-rep
+Finished at: Tue Feb  3 02:24:20 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant11 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 16 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:24:20 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 16, Tokens: 4096, Effective tokens: 65536
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      65536
+  Hidden dim (n):  3072
+  Total elements:  201,326,592
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [65536, 3072] torch.bfloat16
+  output:        [65536, 1536] uint8 (packed FP4)
+  output_scale:  [65536, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:         402.65 MB (tokens x hidden_dim x 2)
+  Write output:       100.66 MB (tokens x hidden_dim / 2)
+  Write scales:        12.58 MB (65536 x 192)
+  ------------------------------------
+  Total read:         402.65 MB
+  Total write:        113.25 MB
+  Total:              515.90 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.1560 ms
+  Std:   0.0178 ms
+  Min:   0.1478 ms
+  Max:   0.3104 ms
+
+Bandwidth:
+  3307.1 GB/s (41.3% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant11.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-2caf.qdstrm'
+[1/1] [0%                          ] nsys-report-2408.nsys-rep[1/1] [0%                          ] nsys-report-2408.nsys-rep[1/1] [=====29%                    ] nsys-report-2408.nsys-rep[1/1] [=====32%                    ] nsys-report-2408.nsys-rep[1/1] [======34%                   ] nsys-report-2408.nsys-rep[1/1] [======35%                   ] nsys-report-2408.nsys-rep[1/1] [=======36%                  ] nsys-report-2408.nsys-rep[1/1] [=======37%                  ] nsys-report-2408.nsys-rep[1/1] [=======38%                  ] nsys-report-2408.nsys-rep[1/1] [========40%                 ] nsys-report-2408.nsys-rep[1/1] [========41%                 ] nsys-report-2408.nsys-rep[1/1] [=========44%                ] nsys-report-2408.nsys-rep[1/1] [===========52%              ] nsys-report-2408.nsys-rep[1/1] [===========53%              ] nsys-report-2408.nsys-rep[1/1] [============56%             ] nsys-report-2408.nsys-rep[1/1] [============57%             ] nsys-report-2408.nsys-rep[1/1] [=============58%            ] nsys-report-2408.nsys-rep[1/1] [=============59%            ] nsys-report-2408.nsys-rep[1/1] [=============60%            ] nsys-report-2408.nsys-rep[1/1] [==============62%           ] nsys-report-2408.nsys-rep[1/1] [==============64%           ] nsys-report-2408.nsys-rep[1/1] [===============67%          ] nsys-report-2408.nsys-rep[1/1] [================68%         ] nsys-report-2408.nsys-rep[1/1] [================69%         ] nsys-report-2408.nsys-rep[1/1] [=================72%        ] nsys-report-2408.nsys-rep[1/1] [====================85%     ] nsys-report-2408.nsys-rep[1/1] [========================100%] nsys-report-2408.nsys-rep[1/1] [========================100%] nsys-report-2408.nsys-rep
+Generated:
+    /tmp/nsys-report-2408.nsys-rep
+Finished at: Tue Feb  3 02:24:27 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant12 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 16 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:24:27 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 16, Tokens: 8192, Effective tokens: 131072
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      131072
+  Hidden dim (n):  3072
+  Total elements:  402,653,184
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [131072, 3072] torch.bfloat16
+  output:        [131072, 1536] uint8 (packed FP4)
+  output_scale:  [131072, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:         805.31 MB (tokens x hidden_dim x 2)
+  Write output:       201.33 MB (tokens x hidden_dim / 2)
+  Write scales:        25.17 MB (131072 x 192)
+  ------------------------------------
+  Total read:         805.31 MB
+  Total write:        226.49 MB
+  Total:                1.03 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.2783 ms
+  Std:   0.0163 ms
+  Min:   0.2690 ms
+  Max:   0.4216 ms
+
+Bandwidth:
+  3708.1 GB/s (46.4% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant12.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-1aea.qdstrm'
+[1/1] [0%                          ] nsys-report-8c5c.nsys-rep[1/1] [0%                          ] nsys-report-8c5c.nsys-rep[1/1] [=====29%                    ] nsys-report-8c5c.nsys-rep[1/1] [=====31%                    ] nsys-report-8c5c.nsys-rep[1/1] [======34%                   ] nsys-report-8c5c.nsys-rep[1/1] [======35%                   ] nsys-report-8c5c.nsys-rep[1/1] [=======36%                  ] nsys-report-8c5c.nsys-rep[1/1] [=======37%                  ] nsys-report-8c5c.nsys-rep[1/1] [=======38%                  ] nsys-report-8c5c.nsys-rep[1/1] [========40%                 ] nsys-report-8c5c.nsys-rep[1/1] [========42%                 ] nsys-report-8c5c.nsys-rep[1/1] [=========44%                ] nsys-report-8c5c.nsys-rep[1/1] [=========45%                ] nsys-report-8c5c.nsys-rep[1/1] [===========52%              ] nsys-report-8c5c.nsys-rep[1/1] [===========53%              ] nsys-report-8c5c.nsys-rep[1/1] [=============58%            ] nsys-report-8c5c.nsys-rep[1/1] [=============59%            ] nsys-report-8c5c.nsys-rep[1/1] [=============60%            ] nsys-report-8c5c.nsys-rep[1/1] [==============61%           ] nsys-report-8c5c.nsys-rep[1/1] [==============62%           ] nsys-report-8c5c.nsys-rep[1/1] [==============63%           ] nsys-report-8c5c.nsys-rep[1/1] [==============64%           ] nsys-report-8c5c.nsys-rep[1/1] [===============65%          ] nsys-report-8c5c.nsys-rep[1/1] [===============67%          ] nsys-report-8c5c.nsys-rep[1/1] [================69%         ] nsys-report-8c5c.nsys-rep[1/1] [================70%         ] nsys-report-8c5c.nsys-rep[1/1] [=================73%        ] nsys-report-8c5c.nsys-rep[1/1] [====================85%     ] nsys-report-8c5c.nsys-rep[1/1] [========================100%] nsys-report-8c5c.nsys-rep[1/1] [========================100%] nsys-report-8c5c.nsys-rep
+Generated:
+    /tmp/nsys-report-8c5c.nsys-rep
+Finished at: Tue Feb  3 02:24:35 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant13 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 64 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:24:35 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 64, Tokens: 4096, Effective tokens: 262144
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      262144
+  Hidden dim (n):  3072
+  Total elements:  805,306,368
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [262144, 3072] torch.bfloat16
+  output:        [262144, 1536] uint8 (packed FP4)
+  output_scale:  [262144, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:           1.61 GB (tokens x hidden_dim x 2)
+  Write output:       402.65 MB (tokens x hidden_dim / 2)
+  Write scales:        50.33 MB (262144 x 192)
+  ------------------------------------
+  Total read:           1.61 GB
+  Total write:        452.98 MB
+  Total:                2.06 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.5177 ms
+  Std:   0.0160 ms
+  Min:   0.5101 ms
+  Max:   0.6635 ms
+
+Bandwidth:
+  3985.9 GB/s (49.8% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant13.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-9664.qdstrm'
+[1/1] [0%                          ] nsys-report-6acd.nsys-rep[1/1] [0%                          ] nsys-report-6acd.nsys-rep[1/1] [====27%                     ] nsys-report-6acd.nsys-rep[1/1] [=====30%                    ] nsys-report-6acd.nsys-rep[1/1] [======33%                   ] nsys-report-6acd.nsys-rep[1/1] [======34%                   ] nsys-report-6acd.nsys-rep[1/1] [======35%                   ] nsys-report-6acd.nsys-rep[1/1] [=======36%                  ] nsys-report-6acd.nsys-rep[1/1] [=======37%                  ] nsys-report-6acd.nsys-rep[1/1] [=======39%                  ] nsys-report-6acd.nsys-rep[1/1] [========40%                 ] nsys-report-6acd.nsys-rep[1/1] [========41%                 ] nsys-report-6acd.nsys-rep[1/1] [=========43%                ] nsys-report-6acd.nsys-rep[1/1] [===========50%              ] nsys-report-6acd.nsys-rep[1/1] [===========51%              ] nsys-report-6acd.nsys-rep[1/1] [============54%             ] nsys-report-6acd.nsys-rep[1/1] [============55%             ] nsys-report-6acd.nsys-rep[1/1] [============56%             ] nsys-report-6acd.nsys-rep[1/1] [============57%             ] nsys-report-6acd.nsys-rep[1/1] [=============58%            ] nsys-report-6acd.nsys-rep[1/1] [=============59%            ] nsys-report-6acd.nsys-rep[1/1] [=============60%            ] nsys-report-6acd.nsys-rep[1/1] [==============62%           ] nsys-report-6acd.nsys-rep[1/1] [==============64%           ] nsys-report-6acd.nsys-rep[1/1] [===============66%          ] nsys-report-6acd.nsys-rep[1/1] [===============67%          ] nsys-report-6acd.nsys-rep[1/1] [================71%         ] nsys-report-6acd.nsys-rep[1/1] [====================84%     ] nsys-report-6acd.nsys-rep[1/1] [========================100%] nsys-report-6acd.nsys-rep[1/1] [========================100%] nsys-report-6acd.nsys-rep
+Generated:
+    /tmp/nsys-report-6acd.nsys-rep
+Finished at: Tue Feb  3 02:24:44 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant14 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 64 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:24:44 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 64, Tokens: 8192, Effective tokens: 524288
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      524288
+  Hidden dim (n):  3072
+  Total elements:  1,610,612,736
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [524288, 3072] torch.bfloat16
+  output:        [524288, 1536] uint8 (packed FP4)
+  output_scale:  [524288, 192] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:           3.22 GB (tokens x hidden_dim x 2)
+  Write output:       805.31 MB (tokens x hidden_dim / 2)
+  Write scales:       100.66 MB (524288 x 192)
+  ------------------------------------
+  Total read:           3.22 GB
+  Total write:        905.97 MB
+  Total:                4.13 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.9968 ms
+  Std:   0.0252 ms
+  Min:   0.9861 ms
+  Max:   1.2313 ms
+
+Bandwidth:
+  4140.5 GB/s (51.8% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant14.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-4d39.qdstrm'
+[1/1] [0%                          ] nsys-report-671d.nsys-rep[1/1] [0%                          ] nsys-report-671d.nsys-rep[1/1] [========40%                 ] nsys-report-671d.nsys-rep[1/1] [========41%                 ] nsys-report-671d.nsys-rep[1/1] [========42%                 ] nsys-report-671d.nsys-rep[1/1] [=========43%                ] nsys-report-671d.nsys-rep[1/1] [=========44%                ] nsys-report-671d.nsys-rep[1/1] [=========46%                ] nsys-report-671d.nsys-rep[1/1] [===========52%              ] nsys-report-671d.nsys-rep[1/1] [===========53%              ] nsys-report-671d.nsys-rep[1/1] [============55%             ] nsys-report-671d.nsys-rep[1/1] [============56%             ] nsys-report-671d.nsys-rep[1/1] [============57%             ] nsys-report-671d.nsys-rep[1/1] [=============58%            ] nsys-report-671d.nsys-rep[1/1] [=============60%            ] nsys-report-671d.nsys-rep[1/1] [==============61%           ] nsys-report-671d.nsys-rep[1/1] [==============62%           ] nsys-report-671d.nsys-rep[1/1] [=================72%        ] nsys-report-671d.nsys-rep[1/1] [===================81%      ] nsys-report-671d.nsys-rep[1/1] [======================90%   ] nsys-report-671d.nsys-rep[1/1] [========================100%] nsys-report-671d.nsys-rep[1/1] [========================100%] nsys-report-671d.nsys-rep
+Generated:
+    /tmp/nsys-report-671d.nsys-rep
+Finished at: Tue Feb  3 02:24:54 UTC 2026
+
+========================================
+Running: nsys profile -o quant/quant15 python scripts/profiling/profile_fp4_quant_bandwidth.py --warmup 100 --iters 100 --batch-size 16 --tokens 4096 --hidden-dim 8192
+Started at: Tue Feb  3 02:24:54 UTC 2026
+----------------------------------------
+Profiling SGLang scaled_fp4_quant kernel...
+  Batch size: 16, Tokens: 4096, Effective tokens: 65536
+  Hidden dim: 8192
+  Clear L2 cache: True
+
+==========================================================================
+scaled_fp4_quant Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens (m):      65536
+  Hidden dim (n):  8192
+  Total elements:  536,870,912
+  Input type:      torch.bfloat16 (2 bytes/element)
+  Output type:     FP4 (E2M1, packed 2 per byte)
+
+Tensor Shapes:
+  input:         [65536, 8192] torch.bfloat16
+  output:        [65536, 4096] uint8 (packed FP4)
+  output_scale:  [65536, 512] fp8 (one per 16 elements)
+
+Operation: Quantize bf16 to FP4 with per-16-element block scaling
+
+Memory Traffic:
+  Read input:           1.07 GB (tokens x hidden_dim x 2)
+  Write output:       268.44 MB (tokens x hidden_dim / 2)
+  Write scales:        33.55 MB (65536 x 512)
+  ------------------------------------
+  Total read:           1.07 GB
+  Total write:        301.99 MB
+  Total:                1.38 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.2962 ms
+  Std:   0.0164 ms
+  Min:   0.2861 ms
+  Max:   0.4198 ms
+
+Bandwidth:
+  4644.9 GB/s (58.1% of 8000 GB/s peak)
+==========================================================================
+Failed to create '/home/samuel/sglang/quant/quant15.nsys-rep': File exists.
+Use `--force-overwrite true` to overwrite existing files.
+Collecting data...
+Generating '/tmp/nsys-report-f53e.qdstrm'
+[1/1] [0%                          ] nsys-report-685a.nsys-rep[1/1] [0%                          ] nsys-report-685a.nsys-rep[1/1] [====28%                     ] nsys-report-685a.nsys-rep[1/1] [=====31%                    ] nsys-report-685a.nsys-rep[1/1] [======34%                   ] nsys-report-685a.nsys-rep[1/1] [======35%                   ] nsys-report-685a.nsys-rep[1/1] [=======36%                  ] nsys-report-685a.nsys-rep[1/1] [=======37%                  ] nsys-report-685a.nsys-rep[1/1] [=======38%                  ] nsys-report-685a.nsys-rep[1/1] [========40%                 ] nsys-report-685a.nsys-rep[1/1] [========42%                 ] nsys-report-685a.nsys-rep[1/1] [=========44%                ] nsys-report-685a.nsys-rep[1/1] [===========52%              ] nsys-report-685a.nsys-rep[1/1] [===========53%              ] nsys-report-685a.nsys-rep[1/1] [============54%             ] nsys-report-685a.nsys-rep[1/1] [=============58%            ] nsys-report-685a.nsys-rep[1/1] [=============59%            ] nsys-report-685a.nsys-rep[1/1] [=============60%            ] nsys-report-685a.nsys-rep[1/1] [==============61%           ] nsys-report-685a.nsys-rep[1/1] [==============62%           ] nsys-report-685a.nsys-rep[1/1] [===============65%          ] nsys-report-685a.nsys-rep[1/1] [===============66%          ] nsys-report-685a.nsys-rep[1/1] [================68%         ] nsys-report-685a.nsys-rep[1/1] [================69%         ] nsys-report-685a.nsys-rep[1/1] [=================73%        ] nsys-report-685a.nsys-rep[1/1] [====================85%     ] nsys-report-685a.nsys-rep[1/1] [========================100%] nsys-report-685a.nsys-rep[1/1] [========================100%] nsys-report-685a.nsys-rep
+Generated:
+    /tmp/nsys-report-685a.nsys-rep
+Finished at: Tue Feb  3 02:25:02 UTC 2026
+
+All runs completed successfully.
