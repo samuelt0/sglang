@@ -1,0 +1,766 @@
+========================================
+Running: nsys profile -o layer/layer1 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 1024 --hidden-dim 3072
+Started at: Tue Feb  3 02:08:55 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 1, Tokens: 1024, Effective tokens: 1024
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          1024
+  Hidden dim:      3072
+  Total elements:  3,145,728
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [1024, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [1024, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:           6.29 MB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:         6.29 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:           6.30 MB
+  Total write:          6.29 MB
+  Total:               12.59 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0265 ms
+  Std:   0.0143 ms
+  Min:   0.0208 ms
+  Max:   0.1609 ms
+
+Bandwidth:
+  475.9 GB/s (5.9% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-3f5f.qdstrm'
+[1/1] [0%                          ] layer1.nsys-rep[1/1] [0%                          ] layer1.nsys-rep[1/1] [====25%                     ] layer1.nsys-rep[1/1] [====28%                     ] layer1.nsys-rep[1/1] [=====32%                    ] layer1.nsys-rep[1/1] [======33%                   ] layer1.nsys-rep[1/1] [======34%                   ] layer1.nsys-rep[1/1] [======35%                   ] layer1.nsys-rep[1/1] [=======36%                  ] layer1.nsys-rep[1/1] [=======38%                  ] layer1.nsys-rep[1/1] [=======39%                  ] layer1.nsys-rep[1/1] [========40%                 ] layer1.nsys-rep[1/1] [========42%                 ] layer1.nsys-rep[1/1] [==========48%               ] layer1.nsys-rep[1/1] [==========49%               ] layer1.nsys-rep[1/1] [===========52%              ] layer1.nsys-rep[1/1] [===========53%              ] layer1.nsys-rep[1/1] [============54%             ] layer1.nsys-rep[1/1] [============55%             ] layer1.nsys-rep[1/1] [============57%             ] layer1.nsys-rep[1/1] [=============58%            ] layer1.nsys-rep[1/1] [=============60%            ] layer1.nsys-rep[1/1] [==============62%           ] layer1.nsys-rep[1/1] [==============64%           ] layer1.nsys-rep[1/1] [===============65%          ] layer1.nsys-rep[1/1] [================68%         ] layer1.nsys-rep[1/1] [====================83%     ] layer1.nsys-rep[1/1] [========================100%] layer1.nsys-rep[1/1] [========================100%] layer1.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer1.nsys-rep
+Finished at: Tue Feb  3 02:09:04 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer2 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 2048 --hidden-dim 3072
+Started at: Tue Feb  3 02:09:04 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 1, Tokens: 2048, Effective tokens: 2048
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          2048
+  Hidden dim:      3072
+  Total elements:  6,291,456
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [2048, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [2048, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:          12.58 MB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:        12.58 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          12.59 MB
+  Total write:         12.58 MB
+  Total:               25.17 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0273 ms
+  Std:   0.0090 ms
+  Min:   0.0232 ms
+  Max:   0.1085 ms
+
+Bandwidth:
+  921.9 GB/s (11.5% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-4b06.qdstrm'
+[1/1] [0%                          ] layer2.nsys-rep[1/1] [0%                          ] layer2.nsys-rep[1/1] [====26%                     ] layer2.nsys-rep[1/1] [=====29%                    ] layer2.nsys-rep[1/1] [=====32%                    ] layer2.nsys-rep[1/1] [======33%                   ] layer2.nsys-rep[1/1] [======34%                   ] layer2.nsys-rep[1/1] [======35%                   ] layer2.nsys-rep[1/1] [=======36%                  ] layer2.nsys-rep[1/1] [=======38%                  ] layer2.nsys-rep[1/1] [=======39%                  ] layer2.nsys-rep[1/1] [========40%                 ] layer2.nsys-rep[1/1] [========42%                 ] layer2.nsys-rep[1/1] [==========48%               ] layer2.nsys-rep[1/1] [==========49%               ] layer2.nsys-rep[1/1] [===========52%              ] layer2.nsys-rep[1/1] [===========53%              ] layer2.nsys-rep[1/1] [============54%             ] layer2.nsys-rep[1/1] [============56%             ] layer2.nsys-rep[1/1] [=============58%            ] layer2.nsys-rep[1/1] [=============59%            ] layer2.nsys-rep[1/1] [=============60%            ] layer2.nsys-rep[1/1] [==============62%           ] layer2.nsys-rep[1/1] [==============64%           ] layer2.nsys-rep[1/1] [===============65%          ] layer2.nsys-rep[1/1] [================68%         ] layer2.nsys-rep[1/1] [====================83%     ] layer2.nsys-rep[1/1] [========================100%] layer2.nsys-rep[1/1] [========================100%] layer2.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer2.nsys-rep
+Finished at: Tue Feb  3 02:09:12 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer3 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:09:12 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          4096
+  Hidden dim:      3072
+  Total elements:  12,582,912
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [4096, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [4096, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:          25.17 MB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:        25.17 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          25.17 MB
+  Total write:         25.17 MB
+  Total:               50.34 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0358 ms
+  Std:   0.0107 ms
+  Min:   0.0309 ms
+  Max:   0.1291 ms
+
+Bandwidth:
+  1407.6 GB/s (17.6% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-25f6.qdstrm'
+[1/1] [0%                          ] layer3.nsys-rep[1/1] [0%                          ] layer3.nsys-rep[1/1] [====25%                     ] layer3.nsys-rep[1/1] [====28%                     ] layer3.nsys-rep[1/1] [=====31%                    ] layer3.nsys-rep[1/1] [=====32%                    ] layer3.nsys-rep[1/1] [======33%                   ] layer3.nsys-rep[1/1] [======34%                   ] layer3.nsys-rep[1/1] [======35%                   ] layer3.nsys-rep[1/1] [=======36%                  ] layer3.nsys-rep[1/1] [=======37%                  ] layer3.nsys-rep[1/1] [=======39%                  ] layer3.nsys-rep[1/1] [========41%                 ] layer3.nsys-rep[1/1] [==========48%               ] layer3.nsys-rep[1/1] [==========49%               ] layer3.nsys-rep[1/1] [===========51%              ] layer3.nsys-rep[1/1] [===========52%              ] layer3.nsys-rep[1/1] [===========53%              ] layer3.nsys-rep[1/1] [============54%             ] layer3.nsys-rep[1/1] [============55%             ] layer3.nsys-rep[1/1] [==============62%           ] layer3.nsys-rep[1/1] [==============64%           ] layer3.nsys-rep[1/1] [===============65%          ] layer3.nsys-rep[1/1] [================68%         ] layer3.nsys-rep[1/1] [===================82%      ] layer3.nsys-rep[1/1] [========================100%] layer3.nsys-rep[1/1] [========================100%] layer3.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer3.nsys-rep
+Finished at: Tue Feb  3 02:09:19 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer4 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:09:19 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 1, Tokens: 8192, Effective tokens: 8192
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          8192
+  Hidden dim:      3072
+  Total elements:  25,165,824
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [8192, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [8192, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:          50.33 MB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:        50.33 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          50.34 MB
+  Total write:         50.33 MB
+  Total:              100.67 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0497 ms
+  Std:   0.0109 ms
+  Min:   0.0444 ms
+  Max:   0.1213 ms
+
+Bandwidth:
+  2024.2 GB/s (25.3% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-3fdf.qdstrm'
+[1/1] [0%                          ] layer4.nsys-rep[1/1] [0%                          ] layer4.nsys-rep[1/1] [====26%                     ] layer4.nsys-rep[1/1] [=====29%                    ] layer4.nsys-rep[1/1] [=====32%                    ] layer4.nsys-rep[1/1] [======33%                   ] layer4.nsys-rep[1/1] [======34%                   ] layer4.nsys-rep[1/1] [======35%                   ] layer4.nsys-rep[1/1] [=======36%                  ] layer4.nsys-rep[1/1] [=======38%                  ] layer4.nsys-rep[1/1] [=======39%                  ] layer4.nsys-rep[1/1] [========40%                 ] layer4.nsys-rep[1/1] [========42%                 ] layer4.nsys-rep[1/1] [==========48%               ] layer4.nsys-rep[1/1] [==========49%               ] layer4.nsys-rep[1/1] [===========52%              ] layer4.nsys-rep[1/1] [===========53%              ] layer4.nsys-rep[1/1] [============54%             ] layer4.nsys-rep[1/1] [============55%             ] layer4.nsys-rep[1/1] [============56%             ] layer4.nsys-rep[1/1] [============57%             ] layer4.nsys-rep[1/1] [=============58%            ] layer4.nsys-rep[1/1] [=============60%            ] layer4.nsys-rep[1/1] [==============62%           ] layer4.nsys-rep[1/1] [==============64%           ] layer4.nsys-rep[1/1] [===============65%          ] layer4.nsys-rep[1/1] [================68%         ] layer4.nsys-rep[1/1] [====================83%     ] layer4.nsys-rep[1/1] [========================100%] layer4.nsys-rep[1/1] [========================100%] layer4.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer4.nsys-rep
+Finished at: Tue Feb  3 02:09:26 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer5 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 2048
+Started at: Tue Feb  3 02:09:26 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 2048
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          4096
+  Hidden dim:      2048
+  Total elements:  8,388,608
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [4096, 2048] torch.bfloat16
+  weight:  [2048] torch.bfloat16
+  output:  [4096, 2048] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:          16.78 MB (tokens x hidden_dim x 2)
+  Read weight:          4.10 KB (hidden_dim x 2, L2 cached)
+  Write output:        16.78 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          16.78 MB
+  Total write:         16.78 MB
+  Total:               33.56 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0305 ms
+  Std:   0.0132 ms
+  Min:   0.0256 ms
+  Max:   0.1277 ms
+
+Bandwidth:
+  1099.4 GB/s (13.7% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-709b.qdstrm'
+[1/1] [0%                          ] layer5.nsys-rep[1/1] [0%                          ] layer5.nsys-rep[1/1] [====26%                     ] layer5.nsys-rep[1/1] [=====29%                    ] layer5.nsys-rep[1/1] [=====32%                    ] layer5.nsys-rep[1/1] [======33%                   ] layer5.nsys-rep[1/1] [======34%                   ] layer5.nsys-rep[1/1] [======35%                   ] layer5.nsys-rep[1/1] [=======36%                  ] layer5.nsys-rep[1/1] [=======38%                  ] layer5.nsys-rep[1/1] [========40%                 ] layer5.nsys-rep[1/1] [========42%                 ] layer5.nsys-rep[1/1] [===========50%              ] layer5.nsys-rep[1/1] [===========51%              ] layer5.nsys-rep[1/1] [===========53%              ] layer5.nsys-rep[1/1] [============54%             ] layer5.nsys-rep[1/1] [============57%             ] layer5.nsys-rep[1/1] [=============58%            ] layer5.nsys-rep[1/1] [=============60%            ] layer5.nsys-rep[1/1] [==============62%           ] layer5.nsys-rep[1/1] [==============64%           ] layer5.nsys-rep[1/1] [===============65%          ] layer5.nsys-rep[1/1] [================68%         ] layer5.nsys-rep[1/1] [===================82%      ] layer5.nsys-rep[1/1] [========================100%] layer5.nsys-rep[1/1] [========================100%] layer5.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer5.nsys-rep
+Finished at: Tue Feb  3 02:09:34 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer6 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 4096
+Started at: Tue Feb  3 02:09:34 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 4096
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          4096
+  Hidden dim:      4096
+  Total elements:  16,777,216
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [4096, 4096] torch.bfloat16
+  weight:  [4096] torch.bfloat16
+  output:  [4096, 4096] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:          33.55 MB (tokens x hidden_dim x 2)
+  Read weight:          8.19 KB (hidden_dim x 2, L2 cached)
+  Write output:        33.55 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          33.56 MB
+  Total write:         33.55 MB
+  Total:               67.12 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0425 ms
+  Std:   0.0123 ms
+  Min:   0.0373 ms
+  Max:   0.1460 ms
+
+Bandwidth:
+  1577.7 GB/s (19.7% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-090d.qdstrm'
+[1/1] [0%                          ] layer6.nsys-rep[1/1] [0%                          ] layer6.nsys-rep[1/1] [====26%                     ] layer6.nsys-rep[1/1] [=====29%                    ] layer6.nsys-rep[1/1] [=====32%                    ] layer6.nsys-rep[1/1] [======33%                   ] layer6.nsys-rep[1/1] [======34%                   ] layer6.nsys-rep[1/1] [======35%                   ] layer6.nsys-rep[1/1] [=======36%                  ] layer6.nsys-rep[1/1] [=======38%                  ] layer6.nsys-rep[1/1] [=======39%                  ] layer6.nsys-rep[1/1] [========40%                 ] layer6.nsys-rep[1/1] [========42%                 ] layer6.nsys-rep[1/1] [==========48%               ] layer6.nsys-rep[1/1] [==========49%               ] layer6.nsys-rep[1/1] [===========50%              ] layer6.nsys-rep[1/1] [===========52%              ] layer6.nsys-rep[1/1] [===========53%              ] layer6.nsys-rep[1/1] [============54%             ] layer6.nsys-rep[1/1] [============55%             ] layer6.nsys-rep[1/1] [============56%             ] layer6.nsys-rep[1/1] [============57%             ] layer6.nsys-rep[1/1] [=============58%            ] layer6.nsys-rep[1/1] [=============60%            ] layer6.nsys-rep[1/1] [==============62%           ] layer6.nsys-rep[1/1] [==============64%           ] layer6.nsys-rep[1/1] [===============65%          ] layer6.nsys-rep[1/1] [================69%         ] layer6.nsys-rep[1/1] [====================83%     ] layer6.nsys-rep[1/1] [========================100%] layer6.nsys-rep[1/1] [========================100%] layer6.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer6.nsys-rep
+Finished at: Tue Feb  3 02:09:42 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer7 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 1 --tokens 4096 --hidden-dim 8192
+Started at: Tue Feb  3 02:09:42 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 1, Tokens: 4096, Effective tokens: 4096
+  Hidden dim: 8192
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          4096
+  Hidden dim:      8192
+  Total elements:  33,554,432
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [4096, 8192] torch.bfloat16
+  weight:  [8192] torch.bfloat16
+  output:  [4096, 8192] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:          67.11 MB (tokens x hidden_dim x 2)
+  Read weight:         16.38 KB (hidden_dim x 2, L2 cached)
+  Write output:        67.11 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          67.13 MB
+  Total write:         67.11 MB
+  Total:              134.23 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0635 ms
+  Std:   0.0091 ms
+  Min:   0.0580 ms
+  Max:   0.1347 ms
+
+Bandwidth:
+  2115.2 GB/s (26.4% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-75a8.qdstrm'
+[1/1] [0%                          ] layer7.nsys-rep[1/1] [0%                          ] layer7.nsys-rep[1/1] [====26%                     ] layer7.nsys-rep[1/1] [=====29%                    ] layer7.nsys-rep[1/1] [=====32%                    ] layer7.nsys-rep[1/1] [======33%                   ] layer7.nsys-rep[1/1] [======34%                   ] layer7.nsys-rep[1/1] [======35%                   ] layer7.nsys-rep[1/1] [=======36%                  ] layer7.nsys-rep[1/1] [=======37%                  ] layer7.nsys-rep[1/1] [=======39%                  ] layer7.nsys-rep[1/1] [========40%                 ] layer7.nsys-rep[1/1] [========41%                 ] layer7.nsys-rep[1/1] [=========43%                ] layer7.nsys-rep[1/1] [==========49%               ] layer7.nsys-rep[1/1] [===========50%              ] layer7.nsys-rep[1/1] [===========52%              ] layer7.nsys-rep[1/1] [===========53%              ] layer7.nsys-rep[1/1] [============54%             ] layer7.nsys-rep[1/1] [============56%             ] layer7.nsys-rep[1/1] [=============60%            ] layer7.nsys-rep[1/1] [==============61%           ] layer7.nsys-rep[1/1] [==============62%           ] layer7.nsys-rep[1/1] [==============64%           ] layer7.nsys-rep[1/1] [===============65%          ] layer7.nsys-rep[1/1] [===============66%          ] layer7.nsys-rep[1/1] [================69%         ] layer7.nsys-rep[1/1] [====================83%     ] layer7.nsys-rep[1/1] [========================100%] layer7.nsys-rep[1/1] [========================100%] layer7.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer7.nsys-rep
+Finished at: Tue Feb  3 02:09:52 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer8 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 4 --tokens 2048 --hidden-dim 3072
+Started at: Tue Feb  3 02:09:52 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 4, Tokens: 2048, Effective tokens: 8192
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          8192
+  Hidden dim:      3072
+  Total elements:  25,165,824
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [8192, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [8192, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:          50.33 MB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:        50.33 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:          50.34 MB
+  Total write:         50.33 MB
+  Total:              100.67 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0498 ms
+  Std:   0.0087 ms
+  Min:   0.0451 ms
+  Max:   0.1182 ms
+
+Bandwidth:
+  2020.4 GB/s (25.3% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-82c4.qdstrm'
+[1/1] [0%                          ] layer8.nsys-rep[1/1] [0%                          ] layer8.nsys-rep[1/1] [====25%                     ] layer8.nsys-rep[1/1] [=====29%                    ] layer8.nsys-rep[1/1] [=====32%                    ] layer8.nsys-rep[1/1] [======33%                   ] layer8.nsys-rep[1/1] [======34%                   ] layer8.nsys-rep[1/1] [======35%                   ] layer8.nsys-rep[1/1] [=======36%                  ] layer8.nsys-rep[1/1] [=======38%                  ] layer8.nsys-rep[1/1] [=======39%                  ] layer8.nsys-rep[1/1] [========40%                 ] layer8.nsys-rep[1/1] [========42%                 ] layer8.nsys-rep[1/1] [==========48%               ] layer8.nsys-rep[1/1] [==========49%               ] layer8.nsys-rep[1/1] [===========52%              ] layer8.nsys-rep[1/1] [===========53%              ] layer8.nsys-rep[1/1] [============54%             ] layer8.nsys-rep[1/1] [============55%             ] layer8.nsys-rep[1/1] [============56%             ] layer8.nsys-rep[1/1] [============57%             ] layer8.nsys-rep[1/1] [=============58%            ] layer8.nsys-rep[1/1] [=============60%            ] layer8.nsys-rep[1/1] [==============62%           ] layer8.nsys-rep[1/1] [==============64%           ] layer8.nsys-rep[1/1] [===============65%          ] layer8.nsys-rep[1/1] [===============66%          ] layer8.nsys-rep[1/1] [================69%         ] layer8.nsys-rep[1/1] [====================83%     ] layer8.nsys-rep[1/1] [========================100%] layer8.nsys-rep[1/1] [========================100%] layer8.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer8.nsys-rep
+Finished at: Tue Feb  3 02:09:59 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer9 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 4 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:09:59 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 4, Tokens: 4096, Effective tokens: 16384
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          16384
+  Hidden dim:      3072
+  Total elements:  50,331,648
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [16384, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [16384, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:         100.66 MB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:       100.66 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         100.67 MB
+  Total write:        100.66 MB
+  Total:              201.33 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.0765 ms
+  Std:   0.0082 ms
+  Min:   0.0719 ms
+  Max:   0.1474 ms
+
+Bandwidth:
+  2632.7 GB/s (32.9% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-ae9d.qdstrm'
+[1/1] [0%                          ] layer9.nsys-rep[1/1] [0%                          ] layer9.nsys-rep[1/1] [====25%                     ] layer9.nsys-rep[1/1] [=====29%                    ] layer9.nsys-rep[1/1] [=====32%                    ] layer9.nsys-rep[1/1] [======33%                   ] layer9.nsys-rep[1/1] [======34%                   ] layer9.nsys-rep[1/1] [======35%                   ] layer9.nsys-rep[1/1] [=======36%                  ] layer9.nsys-rep[1/1] [=======38%                  ] layer9.nsys-rep[1/1] [=======39%                  ] layer9.nsys-rep[1/1] [========40%                 ] layer9.nsys-rep[1/1] [========42%                 ] layer9.nsys-rep[1/1] [==========48%               ] layer9.nsys-rep[1/1] [==========49%               ] layer9.nsys-rep[1/1] [===========52%              ] layer9.nsys-rep[1/1] [===========53%              ] layer9.nsys-rep[1/1] [============54%             ] layer9.nsys-rep[1/1] [============55%             ] layer9.nsys-rep[1/1] [============57%             ] layer9.nsys-rep[1/1] [=============60%            ] layer9.nsys-rep[1/1] [==============62%           ] layer9.nsys-rep[1/1] [==============64%           ] layer9.nsys-rep[1/1] [===============65%          ] layer9.nsys-rep[1/1] [================68%         ] layer9.nsys-rep[1/1] [====================83%     ] layer9.nsys-rep[1/1] [========================100%] layer9.nsys-rep[1/1] [========================100%] layer9.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer9.nsys-rep
+Finished at: Tue Feb  3 02:10:09 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer10 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 4 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:10:09 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 4, Tokens: 8192, Effective tokens: 32768
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          32768
+  Hidden dim:      3072
+  Total elements:  100,663,296
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [32768, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [32768, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:         201.33 MB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:       201.33 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         201.33 MB
+  Total write:        201.33 MB
+  Total:              402.66 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.1322 ms
+  Std:   0.0112 ms
+  Min:   0.1266 ms
+  Max:   0.2336 ms
+
+Bandwidth:
+  3046.4 GB/s (38.1% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-da1e.qdstrm'
+[1/1] [0%                          ] layer10.nsys-rep[1/1] [0%                          ] layer10.nsys-rep[1/1] [====26%                     ] layer10.nsys-rep[1/1] [=====29%                    ] layer10.nsys-rep[1/1] [=====32%                    ] layer10.nsys-rep[1/1] [======33%                   ] layer10.nsys-rep[1/1] [======34%                   ] layer10.nsys-rep[1/1] [======35%                   ] layer10.nsys-rep[1/1] [=======36%                  ] layer10.nsys-rep[1/1] [=======38%                  ] layer10.nsys-rep[1/1] [=======39%                  ] layer10.nsys-rep[1/1] [========40%                 ] layer10.nsys-rep[1/1] [========42%                 ] layer10.nsys-rep[1/1] [==========48%               ] layer10.nsys-rep[1/1] [==========49%               ] layer10.nsys-rep[1/1] [===========52%              ] layer10.nsys-rep[1/1] [===========53%              ] layer10.nsys-rep[1/1] [============54%             ] layer10.nsys-rep[1/1] [============55%             ] layer10.nsys-rep[1/1] [============56%             ] layer10.nsys-rep[1/1] [============57%             ] layer10.nsys-rep[1/1] [=============59%            ] layer10.nsys-rep[1/1] [=============60%            ] layer10.nsys-rep[1/1] [==============62%           ] layer10.nsys-rep[1/1] [==============64%           ] layer10.nsys-rep[1/1] [===============65%          ] layer10.nsys-rep[1/1] [================68%         ] layer10.nsys-rep[1/1] [====================83%     ] layer10.nsys-rep[1/1] [========================100%] layer10.nsys-rep[1/1] [========================100%] layer10.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer10.nsys-rep
+Finished at: Tue Feb  3 02:10:16 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer11 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 16 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:10:16 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 16, Tokens: 4096, Effective tokens: 65536
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          65536
+  Hidden dim:      3072
+  Total elements:  201,326,592
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [65536, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [65536, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:         402.65 MB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:       402.65 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         402.66 MB
+  Total write:        402.65 MB
+  Total:              805.31 MB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.2391 ms
+  Std:   0.0114 ms
+  Min:   0.2325 ms
+  Max:   0.3391 ms
+
+Bandwidth:
+  3367.5 GB/s (42.1% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-45d2.qdstrm'
+[1/1] [0%                          ] layer11.nsys-rep[1/1] [0%                          ] layer11.nsys-rep[1/1] [====26%                     ] layer11.nsys-rep[1/1] [=====29%                    ] layer11.nsys-rep[1/1] [=====32%                    ] layer11.nsys-rep[1/1] [======33%                   ] layer11.nsys-rep[1/1] [======34%                   ] layer11.nsys-rep[1/1] [======35%                   ] layer11.nsys-rep[1/1] [=======36%                  ] layer11.nsys-rep[1/1] [=======38%                  ] layer11.nsys-rep[1/1] [========40%                 ] layer11.nsys-rep[1/1] [========42%                 ] layer11.nsys-rep[1/1] [==========48%               ] layer11.nsys-rep[1/1] [==========49%               ] layer11.nsys-rep[1/1] [===========50%              ] layer11.nsys-rep[1/1] [===========52%              ] layer11.nsys-rep[1/1] [===========53%              ] layer11.nsys-rep[1/1] [============54%             ] layer11.nsys-rep[1/1] [============55%             ] layer11.nsys-rep[1/1] [============56%             ] layer11.nsys-rep[1/1] [=============58%            ] layer11.nsys-rep[1/1] [=============60%            ] layer11.nsys-rep[1/1] [==============62%           ] layer11.nsys-rep[1/1] [==============63%           ] layer11.nsys-rep[1/1] [===============66%          ] layer11.nsys-rep[1/1] [====================83%     ] layer11.nsys-rep[1/1] [========================100%] layer11.nsys-rep[1/1] [========================100%] layer11.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer11.nsys-rep
+Finished at: Tue Feb  3 02:10:24 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer12 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 16 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:10:24 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 16, Tokens: 8192, Effective tokens: 131072
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          131072
+  Hidden dim:      3072
+  Total elements:  402,653,184
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [131072, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [131072, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:         805.31 MB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:       805.31 MB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:         805.31 MB
+  Total write:        805.31 MB
+  Total:                1.61 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.4516 ms
+  Std:   0.0104 ms
+  Min:   0.4454 ms
+  Max:   0.5292 ms
+
+Bandwidth:
+  3566.7 GB/s (44.6% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-6d1e.qdstrm'
+[1/1] [0%                          ] layer12.nsys-rep[1/1] [0%                          ] layer12.nsys-rep[1/1] [====26%                     ] layer12.nsys-rep[1/1] [=====29%                    ] layer12.nsys-rep[1/1] [=====32%                    ] layer12.nsys-rep[1/1] [======33%                   ] layer12.nsys-rep[1/1] [======34%                   ] layer12.nsys-rep[1/1] [======35%                   ] layer12.nsys-rep[1/1] [=======36%                  ] layer12.nsys-rep[1/1] [=======38%                  ] layer12.nsys-rep[1/1] [=======39%                  ] layer12.nsys-rep[1/1] [========40%                 ] layer12.nsys-rep[1/1] [========42%                 ] layer12.nsys-rep[1/1] [==========48%               ] layer12.nsys-rep[1/1] [==========49%               ] layer12.nsys-rep[1/1] [===========50%              ] layer12.nsys-rep[1/1] [===========52%              ] layer12.nsys-rep[1/1] [===========53%              ] layer12.nsys-rep[1/1] [============54%             ] layer12.nsys-rep[1/1] [============57%             ] layer12.nsys-rep[1/1] [=============60%            ] layer12.nsys-rep[1/1] [==============62%           ] layer12.nsys-rep[1/1] [==============64%           ] layer12.nsys-rep[1/1] [===============65%          ] layer12.nsys-rep[1/1] [================68%         ] layer12.nsys-rep[1/1] [====================83%     ] layer12.nsys-rep[1/1] [========================100%] layer12.nsys-rep[1/1] [========================100%] layer12.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer12.nsys-rep
+Finished at: Tue Feb  3 02:10:32 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer13 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 64 --tokens 4096 --hidden-dim 3072
+Started at: Tue Feb  3 02:10:32 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 64, Tokens: 4096, Effective tokens: 262144
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          262144
+  Hidden dim:      3072
+  Total elements:  805,306,368
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [262144, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [262144, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:           1.61 GB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:         1.61 GB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:           1.61 GB
+  Total write:          1.61 GB
+  Total:                3.22 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.8784 ms
+  Std:   0.0093 ms
+  Min:   0.8738 ms
+  Max:   0.9638 ms
+
+Bandwidth:
+  3667.1 GB/s (45.8% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-b6dd.qdstrm'
+[1/1] [0%                          ] layer13.nsys-rep[1/1] [0%                          ] layer13.nsys-rep[1/1] [====26%                     ] layer13.nsys-rep[1/1] [=====29%                    ] layer13.nsys-rep[1/1] [=====32%                    ] layer13.nsys-rep[1/1] [======33%                   ] layer13.nsys-rep[1/1] [======34%                   ] layer13.nsys-rep[1/1] [======35%                   ] layer13.nsys-rep[1/1] [=======36%                  ] layer13.nsys-rep[1/1] [=======38%                  ] layer13.nsys-rep[1/1] [=======39%                  ] layer13.nsys-rep[1/1] [========41%                 ] layer13.nsys-rep[1/1] [========42%                 ] layer13.nsys-rep[1/1] [==========49%               ] layer13.nsys-rep[1/1] [===========50%              ] layer13.nsys-rep[1/1] [===========51%              ] layer13.nsys-rep[1/1] [===========53%              ] layer13.nsys-rep[1/1] [============54%             ] layer13.nsys-rep[1/1] [============55%             ] layer13.nsys-rep[1/1] [============56%             ] layer13.nsys-rep[1/1] [============57%             ] layer13.nsys-rep[1/1] [=============58%            ] layer13.nsys-rep[1/1] [=============59%            ] layer13.nsys-rep[1/1] [==============61%           ] layer13.nsys-rep[1/1] [==============63%           ] layer13.nsys-rep[1/1] [==============64%           ] layer13.nsys-rep[1/1] [===============65%          ] layer13.nsys-rep[1/1] [================69%         ] layer13.nsys-rep[1/1] [====================83%     ] layer13.nsys-rep[1/1] [========================100%] layer13.nsys-rep[1/1] [========================100%] layer13.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer13.nsys-rep
+Finished at: Tue Feb  3 02:10:42 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer14 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 64 --tokens 8192 --hidden-dim 3072
+Started at: Tue Feb  3 02:10:42 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 64, Tokens: 8192, Effective tokens: 524288
+  Hidden dim: 3072
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          524288
+  Hidden dim:      3072
+  Total elements:  1,610,612,736
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [524288, 3072] torch.bfloat16
+  weight:  [3072] torch.bfloat16
+  output:  [524288, 3072] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:           3.22 GB (tokens x hidden_dim x 2)
+  Read weight:          6.14 KB (hidden_dim x 2, L2 cached)
+  Write output:         3.22 GB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:           3.22 GB
+  Total write:          3.22 GB
+  Total:                6.44 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  1.7297 ms
+  Std:   0.0118 ms
+  Min:   1.7231 ms
+  Max:   1.8331 ms
+
+Bandwidth:
+  3724.6 GB/s (46.6% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-21d5.qdstrm'
+[1/1] [0%                          ] layer14.nsys-rep[1/1] [0%                          ] layer14.nsys-rep[1/1] [====26%                     ] layer14.nsys-rep[1/1] [=====29%                    ] layer14.nsys-rep[1/1] [=====32%                    ] layer14.nsys-rep[1/1] [======33%                   ] layer14.nsys-rep[1/1] [======34%                   ] layer14.nsys-rep[1/1] [======35%                   ] layer14.nsys-rep[1/1] [=======36%                  ] layer14.nsys-rep[1/1] [=======37%                  ] layer14.nsys-rep[1/1] [=======38%                  ] layer14.nsys-rep[1/1] [=======39%                  ] layer14.nsys-rep[1/1] [========40%                 ] layer14.nsys-rep[1/1] [========42%                 ] layer14.nsys-rep[1/1] [==========48%               ] layer14.nsys-rep[1/1] [==========49%               ] layer14.nsys-rep[1/1] [===========50%              ] layer14.nsys-rep[1/1] [===========52%              ] layer14.nsys-rep[1/1] [===========53%              ] layer14.nsys-rep[1/1] [============54%             ] layer14.nsys-rep[1/1] [============55%             ] layer14.nsys-rep[1/1] [============56%             ] layer14.nsys-rep[1/1] [============57%             ] layer14.nsys-rep[1/1] [=============60%            ] layer14.nsys-rep[1/1] [==============61%           ] layer14.nsys-rep[1/1] [==============64%           ] layer14.nsys-rep[1/1] [===============65%          ] layer14.nsys-rep[1/1] [================70%         ] layer14.nsys-rep[1/1] [====================83%     ] layer14.nsys-rep[1/1] [========================100%] layer14.nsys-rep[1/1] [========================100%] layer14.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer14.nsys-rep
+Finished at: Tue Feb  3 02:10:50 UTC 2026
+
+========================================
+Running: nsys profile -o layer/layer15 python scripts/profiling/profile_rmsnorm_bandwidth.py --warmup 100 --iters 100 --batch-size 16 --tokens 4096 --hidden-dim 8192
+Started at: Tue Feb  3 02:10:50 UTC 2026
+----------------------------------------
+Profiling SGLang rmsnorm kernel...
+  Batch size: 16, Tokens: 4096, Effective tokens: 65536
+  Hidden dim: 8192
+  Clear L2 cache: True
+
+==========================================================================
+rmsnorm Kernel Memory Bandwidth Profile
+==========================================================================
+
+Configuration:
+  Tokens:          65536
+  Hidden dim:      8192
+  Total elements:  536,870,912
+  Data type:       torch.bfloat16 (2 bytes/element)
+
+Tensor Shapes:
+  input:   [65536, 8192] torch.bfloat16
+  weight:  [8192] torch.bfloat16
+  output:  [65536, 8192] torch.bfloat16
+
+Operation: output = (input / rms(input)) * weight
+
+Memory Traffic:
+  Read input:           1.07 GB (tokens x hidden_dim x 2)
+  Read weight:         16.38 KB (hidden_dim x 2, L2 cached)
+  Write output:         1.07 GB (tokens x hidden_dim x 2)
+  ------------------------------------
+  Total read:           1.07 GB
+  Total write:          1.07 GB
+  Total:                2.15 GB
+
+Timing (100 iterations, L2 cache cleared):
+  Mean:  0.6599 ms
+  Std:   0.0111 ms
+  Min:   0.6526 ms
+  Max:   0.7505 ms
+
+Bandwidth:
+  3254.5 GB/s (40.7% of 8000 GB/s peak)
+==========================================================================
+Collecting data...
+Generating '/tmp/nsys-report-7d5b.qdstrm'
+[1/1] [0%                          ] layer15.nsys-rep[1/1] [0%                          ] layer15.nsys-rep[1/1] [====25%                     ] layer15.nsys-rep[1/1] [=====29%                    ] layer15.nsys-rep[1/1] [=====32%                    ] layer15.nsys-rep[1/1] [======33%                   ] layer15.nsys-rep[1/1] [======34%                   ] layer15.nsys-rep[1/1] [======35%                   ] layer15.nsys-rep[1/1] [=======36%                  ] layer15.nsys-rep[1/1] [=======38%                  ] layer15.nsys-rep[1/1] [=======39%                  ] layer15.nsys-rep[1/1] [========40%                 ] layer15.nsys-rep[1/1] [========42%                 ] layer15.nsys-rep[1/1] [===========50%              ] layer15.nsys-rep[1/1] [===========53%              ] layer15.nsys-rep[1/1] [============54%             ] layer15.nsys-rep[1/1] [============55%             ] layer15.nsys-rep[1/1] [============56%             ] layer15.nsys-rep[1/1] [============57%             ] layer15.nsys-rep[1/1] [=============58%            ] layer15.nsys-rep[1/1] [=============60%            ] layer15.nsys-rep[1/1] [==============62%           ] layer15.nsys-rep[1/1] [==============64%           ] layer15.nsys-rep[1/1] [===============65%          ] layer15.nsys-rep[1/1] [================68%         ] layer15.nsys-rep[1/1] [====================83%     ] layer15.nsys-rep[1/1] [========================100%] layer15.nsys-rep[1/1] [========================100%] layer15.nsys-rep
+Generated:
+    /home/samuel/sglang/layer/layer15.nsys-rep
+Finished at: Tue Feb  3 02:11:00 UTC 2026
+
+All runs completed successfully.
